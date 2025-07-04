@@ -1,3 +1,3 @@
 # Run development server
-docker-compose --profile dev up --build
+docker-compose --profile dev up --build -d
 
