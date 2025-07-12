@@ -6,7 +6,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.dev
-    network_mode: "host"
     ports:
       - "${DEV_PORT:-3000}:5173"
     volumes:
