@@ -1,0 +1,288 @@
+:root {
+  /* Color Variables */
+  --terminal-green: #00ff00;
+  --terminal-green-dim: #00aa00;
+  --terminal-green-dark: #003300;
+  --terminal-black: #000000;
+  --terminal-dark: #111111;
+  --terminal-gray: #333333;
+  --terminal-amber: #ffb000;
+  --terminal-blue: #00aaff;
+  --glitch-blue: #0000ff;
+  --glitch-red: #ff0000;
+  
+  /* Fonts */
+  --font-terminal: 'VT323', monospace;
+  --font-mono: 'Share Tech Mono', monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--terminal-black);
+  color: var(--terminal-green);
+  font-family: var(--font-mono);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* CRT Monitor Effect */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  );
+  background-size: 100% 4px;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0.15;
+}
+
+/* Screen Curvature Effect */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    transparent 50%,
+    rgba(0, 0, 0, 0.5) 150%
+  );
+  pointer-events: none;
+  z-index: 1001;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-terminal);
+  letter-spacing: 1px;
+  color: var(--terminal-green);
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px var(--terminal-green), 0 0 20px var(--terminal-green);
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+button, .button {
+  background-color: var(--terminal-gray);
+  color: var(--terminal-green);
+  border: 2px solid var(--terminal-green);
+  padding: 0.6rem 1.2rem;
+  font-family: var(--font-terminal);
+  font-size: 1rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+}
+
+button:hover, .button:hover {
+  background-color: var(--terminal-green-dark);
+  box-shadow: 0 0 10px var(--terminal-green), 0 0 20px var(--terminal-green-dim);
+}
+
+button:active, .button:active {
+  transform: scale(0.98);
+}
+
+/* LED indicator style */
+.led {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 8px;
+  background-color: var(--terminal-gray);
+  box-shadow: 0 0 5px var(--terminal-gray);
+}
+
+.led.active {
+  background-color: var(--terminal-green);
+  box-shadow: 0 0 5px var(--terminal-green), 0 0 10px var(--terminal-green);
+}
+
+.led.warning {
+  background-color: var(--terminal-amber);
+  box-shadow: 0 0 5px var(--terminal-amber), 0 0 10px var(--terminal-amber);
+}
+
+.led.error {
+  background-color: var(--glitch-red);
+  box-shadow: 0 0 5px var(--glitch-red), 0 0 10px var(--glitch-red);
+}
+
+/* Terminal window styles */
+.terminal {
+  background-color: var(--terminal-dark);
+  border: 2px solid var(--terminal-green);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  box-shadow: 0 0 15px var(--terminal-green-dim);
+}
+
+.terminal::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 25px;
+  background-color: var(--terminal-green-dark);
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.terminal-content {
+  margin-top: 12px;
+  font-family: var(--font-mono);
+  overflow: auto;
+  max-height: 400px;
+}
+
+/* Pixelated borders */
+.pixel-border {
+  position: relative;
+}
+
+.pixel-border::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: transparent;
+  border: 2px solid var(--terminal-green);
+  z-index: -1;
+}
+
+/* Scanner animation */
+@keyframes scan {
+  0% {
+    background-position: 0 -100vh;
+  }
+  100% {
+    background-position: 0 100vh;
+  }
+}
+
+.scanner {
+  position: relative;
+  overflow: hidden;
+}
+
+.scanner::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 255, 0, 0.2),
+    transparent
+  );
+  background-size: 100% 100vh;
+  animation: scan 5s linear infinite;
+  pointer-events: none;
+}
+
+/* Text glitch effect */
+@keyframes glitch {
+  0% {
+    text-shadow: -2px 0 var(--glitch-blue), 2px 0 var(--glitch-red);
+    transform: translate(0);
+  }
+  25% {
+    text-shadow: -2px 0 var(--glitch-red), 2px 0 var(--glitch-blue);
+    transform: translate(1px);
+  }
+  50% {
+    text-shadow: 2px 0 var(--glitch-blue), -2px 0 var(--glitch-red);
+    transform: translate(0);
+  }
+  75% {
+    text-shadow: 2px 0 var(--glitch-red), -2px 0 var(--glitch-blue);
+    transform: translate(-1px);
+  }
+  100% {
+    text-shadow: -2px 0 var(--glitch-blue), 2px 0 var(--glitch-red);
+    transform: translate(0);
+  }
+}
+
+.glitch {
+  animation: glitch 0.3s infinite;
+  animation-play-state: paused;
+}
+
+.glitch:hover {
+  animation-play-state: running;
+}
+
+/* Flicker animation */
+@keyframes flicker {
+  0% { opacity: 1; }
+  5% { opacity: 0.8; }
+  10% { opacity: 1; }
+  15% { opacity: 0.9; }
+  20% { opacity: 1; }
+  25% { opacity: 0.7; }
+  30% { opacity: 1; }
+  35% { opacity: 0.9; }
+  40% { opacity: 1; }
+  45% { opacity: 0.8; }
+  50% { opacity: 1; }
+  55% { opacity: 1; }
+  60% { opacity: 0.8; }
+  65% { opacity: 1; }
+  70% { opacity: 0.9; }
+  75% { opacity: 1; }
+  80% { opacity: 0.8; }
+  85% { opacity: 1; }
+  90% { opacity: 0.9; }
+  95% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+
+.flicker {
+  animation: flicker 10s infinite;
+}
+
+/* Grid background */
+.grid-background {
+  background-image: 
+    linear-gradient(to right, rgba(0, 255, 0, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 255, 0, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}

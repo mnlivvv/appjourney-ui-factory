@@ -1,0 +1,235 @@
+/* App container */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Boot screen */
+.boot-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--terminal-black);
+  padding: 2rem;
+}
+
+.boot-content {
+  width: 100%;
+  max-width: 600px;
+  background-color: var(--terminal-dark);
+  border: 2px solid var(--terminal-green);
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 0 30px var(--terminal-green-dim);
+}
+
+.boot-content h1 {
+  margin-bottom: 2rem;
+  font-size: 3rem;
+}
+
+.progress-container {
+  width: 100%;
+  height: 20px;
+  background-color: var(--terminal-gray);
+  border: 1px solid var(--terminal-green);
+  margin-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: var(--terminal-green);
+  transition: width 0.5s ease;
+  position: relative;
+}
+
+.progress-bar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 255, 0, 0.5) 50%,
+    transparent 100%
+  );
+  animation: progress-glow 1.5s ease-in-out infinite;
+}
+
+@keyframes progress-glow {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.boot-message {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Main layout */
+.main-content {
+  display: flex;
+  flex: 1;
+}
+
+.content-area {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+  transition: margin-left 0.3s ease;
+}
+
+/* Terminal-style section containers */
+.section {
+  margin-bottom: 2rem;
+  background-color: var(--terminal-dark);
+  border: 1px solid var(--terminal-green);
+  border-radius: 8px;
+  padding: 1.5rem;
+  position: relative;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.8rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--terminal-green-dim);
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+}
+
+.section-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Card grid */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background-color: rgba(0, 20, 0, 0.7);
+  border: 1px solid var(--terminal-green-dim);
+  border-radius: 6px;
+  padding: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 15px var(--terminal-green-dim);
+  border-color: var(--terminal-green);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.card-body {
+  position: relative;
+}
+
+/* Data display */
+.data-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(0, 255, 0, 0.1);
+}
+
+.data-label {
+  color: var(--terminal-green-dim);
+}
+
+.data-value {
+  font-family: var(--font-mono);
+}
+
+/* Form elements */
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--terminal-green);
+  font-family: var(--font-terminal);
+}
+
+.form-input {
+  width: 100%;
+  background-color: var(--terminal-dark);
+  border: 1px solid var(--terminal-green-dim);
+  border-radius: 4px;
+  padding: 0.8rem;
+  color: var(--terminal-green);
+  font-family: var(--font-mono);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--terminal-green);
+  box-shadow: 0 0 10px var(--terminal-green-dim);
+}
+
+/* Loading and status indicators */
+.status-indicator {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  color: var(--terminal-green-dim);
+}
+
+.loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(0, 255, 0, 0.3);
+  border-radius: 50%;
+  border-top-color: var(--terminal-green);
+  animation: spin 1s linear infinite;
+  margin-right: 0.5rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+  }
+  
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
