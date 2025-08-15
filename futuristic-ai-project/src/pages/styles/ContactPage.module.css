@@ -1,0 +1,253 @@
+.contactPage {
+  padding-top: 80px;
+}
+
+.heroSection {
+  background-color: var(--color-bg-dark);
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 242, 255, 0.1) 0%, rgba(179, 0, 255, 0.05) 100%);
+  z-index: 0;
+}
+
+.title {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  opacity: 0.9;
+  max-width: 800px;
+  position: relative;
+  z-index: 1;
+}
+
+.faqSection {
+  padding: 6rem 0;
+  background-color: var(--color-bg-dark);
+  position: relative;
+  overflow: hidden;
+}
+
+.faqSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(rgba(255, 0, 255, 0.1) 2px, transparent 2px);
+  background-size: 30px 30px;
+  z-index: 0;
+  opacity: 0.1;
+}
+
+.faqTitle {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  position: relative;
+}
+
+.faqTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+  border-radius: 3px;
+}
+
+.faqList {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faqItem {
+  background-color: rgba(5, 16, 41, 0.5);
+  border: 1px solid rgba(0, 242, 255, 0.2);
+  border-radius: var(--border-radius);
+  margin-bottom: 1rem;
+  transition: all var(--transition-medium);
+}
+
+.faqItem:hover {
+  border-color: rgba(0, 242, 255, 0.4);
+}
+
+.faqItem.active {
+  border-color: var(--neon-blue);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.faqQuestion {
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.faqQuestion h3 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.faqToggle {
+  color: var(--neon-blue);
+  transition: transform var(--transition-medium);
+}
+
+.faqItem.active .faqToggle {
+  transform: rotate(180deg);
+}
+
+.faqAnswer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--transition-medium), padding var(--transition-medium);
+}
+
+.faqItem.active .faqAnswer {
+  max-height: 500px;
+  padding: 0 1.5rem 1.5rem;
+}
+
+.faqAnswer p {
+  line-height: 1.7;
+  opacity: 0.9;
+}
+
+.officeSection {
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.officeTitle {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  position: relative;
+}
+
+.officeTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--neon-cyan), var(--neon-blue));
+  border-radius: 3px;
+}
+
+.officeGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.officeCard {
+  background-color: rgba(5, 16, 41, 0.5);
+  border: 1px solid rgba(0, 242, 255, 0.2);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  transition: all var(--transition-medium);
+  height: 100%;
+}
+
+.officeCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border-color: var(--neon-cyan);
+}
+
+.officeCity {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--neon-cyan);
+  position: relative;
+  display: inline-block;
+}
+
+.officeCity::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--neon-cyan), transparent);
+}
+
+.officeDetails {
+  margin-top: 1.5rem;
+}
+
+.officeDetail {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.officeDetail svg {
+  margin-top: 3px;
+  color: var(--neon-blue);
+  flex-shrink: 0;
+}
+
+.officeDetail span {
+  line-height: 1.5;
+}
+
+@media (max-width: 1024px) {
+  .officeGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+  
+  .subtitle {
+    font-size: 1.25rem;
+  }
+  
+  .faqTitle, .officeTitle {
+    font-size: 2rem;
+  }
+  
+  .officeGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .faqQuestion {
+    padding: 1.2rem;
+  }
+  
+  .faqQuestion h3 {
+    font-size: 1.1rem;
+  }
+}

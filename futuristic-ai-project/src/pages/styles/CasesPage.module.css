@@ -1,0 +1,340 @@
+.casesPage {
+  padding-top: 80px;
+}
+
+.heroSection {
+  background-color: var(--color-bg-dark);
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 242, 255, 0.1) 0%, rgba(179, 0, 255, 0.05) 100%);
+  z-index: 0;
+}
+
+.title {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  opacity: 0.9;
+  max-width: 800px;
+  position: relative;
+  z-index: 1;
+}
+
+.filterSection {
+  background-color: var(--color-bg-light);
+  padding: 2rem 0;
+  position: sticky;
+  top: 80px;
+  z-index: 10;
+  border-bottom: 1px solid rgba(0, 242, 255, 0.2);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.filterControls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.filterButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filterButton {
+  background-color: transparent;
+  border: 1px solid rgba(0, 242, 255, 0.3);
+  color: var(--color-text);
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.filterButton:hover {
+  border-color: var(--neon-blue);
+  box-shadow: 0 0 10px rgba(0, 242, 255, 0.2);
+}
+
+.filterButton.active {
+  background-color: var(--neon-blue);
+  border-color: var(--neon-blue);
+  color: var(--color-bg-dark);
+  box-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
+}
+
+.searchContainer {
+  position: relative;
+  width: 300px;
+}
+
+.searchInput {
+  width: 100%;
+  background-color: rgba(1, 2, 18, 0.6);
+  border: 1px solid rgba(0, 242, 255, 0.3);
+  border-radius: var(--border-radius);
+  padding: 0.8rem 1rem 0.8rem 2.5rem;
+  color: var(--color-text);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.9rem;
+  transition: all var(--transition-fast);
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: var(--neon-blue);
+  box-shadow: 0 0 10px rgba(0, 242, 255, 0.3);
+}
+
+.searchIcon {
+  position: absolute;
+  left: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--neon-blue);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.casesSection {
+  padding: 4rem 0;
+}
+
+.casesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+.caseCard {
+  background-color: rgba(5, 16, 41, 0.5);
+  border: 1px solid rgba(0, 242, 255, 0.2);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  transition: all var(--transition-medium);
+}
+
+.caseCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border-color: var(--neon-blue);
+}
+
+.caseImageContainer {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.caseImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-medium);
+}
+
+.caseCard:hover .caseImage {
+  transform: scale(1.05);
+}
+
+.caseOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(1, 2, 18, 0), rgba(1, 2, 18, 0.8));
+}
+
+.caseTags {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.industryTag, .solutionTag {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
+  border-radius: var(--border-radius);
+  font-weight: 500;
+}
+
+.industryTag {
+  background-color: rgba(0, 242, 255, 0.2);
+  color: var(--neon-blue);
+  border: 1px solid rgba(0, 242, 255, 0.4);
+}
+
+.solutionTag {
+  background-color: rgba(255, 0, 255, 0.2);
+  color: var(--neon-pink);
+  border: 1px solid rgba(255, 0, 255, 0.4);
+}
+
+.caseContent {
+  padding: 2rem;
+}
+
+.caseTitle {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.caseDescription {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.caseDetails {
+  margin-bottom: 2rem;
+}
+
+.caseSection {
+  margin-bottom: 1.5rem;
+}
+
+.caseSection h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+  color: var(--neon-blue);
+  position: relative;
+  display: inline-block;
+}
+
+.caseSection h3::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--neon-blue), transparent);
+}
+
+.caseSection p {
+  line-height: 1.7;
+  white-space: pre-line;
+}
+
+.resultsList {
+  padding-left: 1.5rem;
+}
+
+.resultsList li {
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.resultsList li::before {
+  content: '›';
+  position: absolute;
+  left: -1.5rem;
+  color: var(--neon-blue);
+}
+
+.caseFooter {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.contactButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  color: var(--neon-blue);
+  border: 1px solid var(--neon-blue);
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: var(--border-radius);
+  transition: all var(--transition-medium);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.contactButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: var(--neon-blue);
+  transition: width var(--transition-medium);
+  z-index: -1;
+}
+
+.contactButton:hover {
+  color: var(--color-bg-dark);
+  box-shadow: 0 0 20px var(--neon-blue);
+}
+
+.contactButton:hover::before {
+  width: 100%;
+}
+
+.noResults {
+  background-color: rgba(5, 16, 41, 0.5);
+  border: 1px solid rgba(0, 242, 255, 0.2);
+  border-radius: var(--border-radius);
+  padding: 3rem;
+  text-align: center;
+}
+
+.noResults p {
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .filterControls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .searchContainer {
+    width: 100%;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+  }
+  
+  .subtitle {
+    font-size: 1.25rem;
+  }
+  
+  .caseImageContainer {
+    height: 250px;
+  }
+  
+  .caseTitle {
+    font-size: 1.5rem;
+  }
+}

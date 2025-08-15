@@ -1,0 +1,304 @@
+.aboutPage {
+  padding-top: 80px;
+}
+
+.heroSection {
+  background-color: var(--color-bg-dark);
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 242, 255, 0.1) 0%, rgba(179, 0, 255, 0.05) 100%);
+  z-index: 0;
+}
+
+.title {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  opacity: 0.9;
+  max-width: 800px;
+  position: relative;
+  z-index: 1;
+}
+
+.missionSection {
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.missionGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.missionContent h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.missionContent h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+  border-radius: 3px;
+}
+
+.missionContent p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  opacity: 0.9;
+}
+
+.missionImage {
+  position: relative;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.missionImage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--neon-blue);
+  box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
+  border-radius: var(--border-radius);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.missionImage img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform var(--transition-medium);
+}
+
+.missionImage:hover img {
+  transform: scale(1.05);
+}
+
+.valuesSection {
+  padding: 6rem 0;
+  background-color: var(--color-bg-dark);
+  position: relative;
+  overflow: hidden;
+}
+
+.valuesSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(rgba(255, 0, 255, 0.1) 2px, transparent 2px);
+  background-size: 30px 30px;
+  z-index: 0;
+  opacity: 0.1;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  position: relative;
+}
+
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+  border-radius: 3px;
+}
+
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.valueCard {
+  background-color: rgba(5, 16, 41, 0.5);
+  border: 1px solid rgba(0, 242, 255, 0.2);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  transition: all var(--transition-medium);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.valueCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border-color: var(--neon-blue);
+}
+
+.valueIcon {
+  color: var(--neon-pink);
+  margin-bottom: 1.5rem;
+}
+
+.valueCard h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.valueCard p {
+  opacity: 0.8;
+  line-height: 1.6;
+}
+
+.teamSection {
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.sectionSubtitle {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.teamMember {
+  text-align: center;
+}
+
+.memberPlaceholder {
+  width: 180px;
+  height: 180px;
+  background: linear-gradient(135deg, var(--color-bg-light), var(--color-bg-dark));
+  border-radius: 50%;
+  margin: 0 auto 1.5rem;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0, 242, 255, 0.3);
+}
+
+.memberPlaceholder::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(0, 242, 255, 0.1), rgba(255, 0, 255, 0.1));
+  animation: rotate 10s linear infinite;
+}
+
+.memberPlaceholder::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  background: var(--color-bg-dark);
+  border-radius: 50%;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.teamMember h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.memberRole {
+  color: var(--neon-blue);
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.memberBio {
+  opacity: 0.8;
+}
+
+@media (max-width: 1024px) {
+  .valuesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .teamGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .missionGrid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+  }
+  
+  .subtitle {
+    font-size: 1.25rem;
+  }
+  
+  .sectionTitle {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .valuesGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .teamGrid {
+    grid-template-columns: 1fr;
+  }
+}

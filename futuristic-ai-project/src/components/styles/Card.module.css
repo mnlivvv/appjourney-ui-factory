@@ -1,0 +1,134 @@
+.card {
+  background-color: rgba(5, 16, 41, 0.5);
+  border: 1px solid rgba(0, 242, 255, 0.2);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  transition: all var(--transition-medium);
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(0, 242, 255, 0.05), rgba(179, 0, 255, 0.05));
+  z-index: -1;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0, 242, 255, 0.2);
+  border-color: rgba(0, 242, 255, 0.4);
+}
+
+.cardIcon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--neon-blue);
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-text);
+}
+
+.cardContent {
+  opacity: 0.8;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.cardLink {
+  display: inline-flex;
+  align-items: center;
+  color: var(--neon-blue);
+  gap: 0.5rem;
+  font-weight: 500;
+  margin-top: auto;
+}
+
+.cardLinkIcon {
+  transition: transform var(--transition-fast);
+}
+
+.cardLink:hover .cardLinkIcon {
+  transform: translateX(5px);
+}
+
+.featuredCard {
+  border-color: var(--neon-blue);
+  background-color: rgba(0, 242, 255, 0.05);
+}
+
+/* Card with image variant */
+.imageCard {
+  padding: 0;
+  border: none;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  background-color: transparent;
+}
+
+.imageCard::before {
+  display: none;
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 66.67%; /* 3:2 aspect ratio */
+  overflow: hidden;
+}
+
+.image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-medium);
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(1, 2, 18, 0), rgba(1, 2, 18, 0.9));
+  z-index: 1;
+}
+
+.imageCard:hover .image {
+  transform: scale(1.05);
+}
+
+.imageCardContent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem;
+  z-index: 2;
+}
+
+.imageCardTitle {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
+}
+
+.imageCardDescription {
+  opacity: 0.9;
+  margin-bottom: 1rem;
+}
