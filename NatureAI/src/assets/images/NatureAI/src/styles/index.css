@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --organic-curve: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  --leaf-curve: 50% 50% 30% 70% / 50% 50% 70% 60%;
+}
+
+body {
+  @apply bg-gray-50 font-sans text-gray-800;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+@layer components {
+  .btn {
+    @apply px-6 py-2 rounded-full font-medium transition-all duration-300;
+  }
+  
+  .btn-primary {
+    @apply bg-nature-green text-white hover:bg-nature-green-dark shadow-md hover:shadow-lg;
+  }
+  
+  .btn-secondary {
+    @apply bg-nature-blue text-white hover:bg-nature-blue-dark shadow-md hover:shadow-lg;
+  }
+  
+  .btn-tech {
+    @apply bg-nature-tech-dark text-white hover:bg-nature-tech shadow-md hover:shadow-lg;
+  }
+  
+  .organic-card {
+    @apply rounded-blob bg-white p-6 shadow-md transition-all duration-500 hover:shadow-lg;
+  }
+  
+  .tech-card {
+    @apply rounded-md bg-white border border-nature-tech-light/20 p-6 shadow-md hover:shadow-lg transition-all duration-300;
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-4xl font-display font-semibold mb-6 text-nature-green-dark;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-nature-green-dark to-nature-tech-dark inline-block text-transparent bg-clip-text;
+  }
+  
+  .leaf-shape {
+    border-radius: var(--leaf-curve);
+  }
+  
+  .blob-shape {
+    border-radius: var(--organic-curve);
+  }
+}
+
+/* Animation classes */
+.floating {
+  animation: floating 6s ease-in-out infinite;
+}
+
+.floating-slow {
+  animation: floating 8s ease-in-out infinite;
+}
+
+.floating-fast {
+  animation: floating 4s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-nature-green-light rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-nature-green;
+}
