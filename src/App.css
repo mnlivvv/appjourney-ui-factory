@@ -1,42 +1,81 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* App specific styles */
+
+.app {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Customize scrollbars for desktop area */
+.desktop::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.desktop::-webkit-scrollbar-track {
+  background: var(--button-face);
+  border: 2px solid;
+  border-color: 
+    var(--button-dark-shadow) 
+    var(--button-highlight) 
+    var(--button-highlight) 
+    var(--button-dark-shadow);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.desktop::-webkit-scrollbar-thumb {
+  background: var(--button-face);
+  border: 2px solid;
+  border-color: 
+    var(--button-highlight) 
+    var(--button-dark-shadow) 
+    var(--button-dark-shadow) 
+    var(--button-highlight);
 }
 
-.card {
-  padding: 2em;
+/* Message styling */
+.user-message .message-content {
+  color: var(--text-color);
 }
 
-.read-the-docs {
-  color: #888;
+.ai-message .message-content {
+  color: var(--text-color);
+  opacity: 0.9;
+}
+
+/* Screen flicker animation - more subtle */
+@keyframes scanline {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(100vh); }
+}
+
+.crt-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 10;
+  animation: scanline 8s linear infinite;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+/* Chat input effects */
+.retro-input:focus + .blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Improve window shadow based on theme */
+.theme-green .retro-window {
+  box-shadow: 0 0 15px rgba(51, 255, 51, 0.2);
+}
+
+.theme-amber .retro-window {
+  box-shadow: 0 0 15px rgba(255, 204, 0, 0.2);
+}
+
+.theme-blue .retro-window {
+  box-shadow: 0 0 15px rgba(85, 85, 255, 0.2);
 }

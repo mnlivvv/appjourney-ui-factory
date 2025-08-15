@@ -1,0 +1,17 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="48" height="48" fill="none"/>
+  <!-- Gear outer circle -->
+  <circle cx="24" cy="24" r="16" fill="#222222" stroke="#33FF33" stroke-width="2"/>
+  <!-- Gear inner circle -->
+  <circle cx="24" cy="24" r="6" fill="#222222" stroke="#33FF33" stroke-width="2"/>
+  <!-- Gear teeth -->
+  <rect x="22" y="4" width="4" height="8" fill="#33FF33"/>
+  <rect x="22" y="36" width="4" height="8" fill="#33FF33"/>
+  <rect x="4" y="22" width="8" height="4" fill="#33FF33"/>
+  <rect x="36" y="22" width="8" height="4" fill="#33FF33"/>
+  <!-- Diagonal teeth -->
+  <rect x="8.5" y="8.5" width="4" height="8" transform="rotate(45 8.5 8.5)" fill="#33FF33"/>
+  <rect x="34.5" y="34.5" width="4" height="8" transform="rotate(45 34.5 34.5)" fill="#33FF33"/>
+  <rect x="8.5" y="39.5" width="4" height="8" transform="rotate(-45 8.5 39.5)" fill="#33FF33"/>
+  <rect x="34.5" y="13.5" width="4" height="8" transform="rotate(-45 34.5 13.5)" fill="#33FF33"/>
+</svg>

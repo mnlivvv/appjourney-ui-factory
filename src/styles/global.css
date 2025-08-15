@@ -1,0 +1,363 @@
+/* CRT and Retro Computer Interface Styles */
+
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+  /* CRT Phosphor Colors */
+  --green-phosphor: #33FF33;
+  --green-phosphor-dim: #0F4F0F;
+  --amber-phosphor: #FFCC00;
+  --amber-phosphor-dim: #664C00;
+  --blue-phosphor: #5555FF;
+  --blue-phosphor-dim: #0F0F4F;
+  --dark-bg: #000000;
+  --window-bg: #181818;
+  --button-face: #C0C0C0;
+  --button-highlight: #FFFFFF;
+  --button-shadow: #808080;
+  --button-dark-shadow: #404040;
+  --text-color: var(--green-phosphor);
+  
+  /* Fonts */
+  --terminal-font: 'VT323', monospace;
+  --pixel-font: 'Press Start 2P', monospace;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--terminal-font);
+  background-color: var(--dark-bg);
+  color: var(--text-color);
+  line-height: 1.4;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  text-align: left;
+}
+
+/* CRT Effects */
+.crt-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* CRT Scanlines Effect */
+.crt-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.03) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 100% 4px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* CRT Flicker Animation */
+@keyframes crt-flicker {
+  0% { opacity: 1.0; }
+  50% { opacity: 0.98; }
+  52% { opacity: 1.0; }
+  54% { opacity: 0.99; }
+  100% { opacity: 1.0; }
+}
+
+.crt-container {
+  animation: crt-flicker 8s infinite;
+}
+
+/* Text Glow Effect */
+.text-glow {
+  color: var(--text-color);
+  text-shadow: 0 0 5px var(--text-color);
+}
+
+/* Retro Window */
+.retro-window {
+  background-color: var(--window-bg);
+  border: 4px solid;
+  border-color: 
+    var(--button-highlight) 
+    var(--button-dark-shadow) 
+    var(--button-dark-shadow) 
+    var(--button-highlight);
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  color: var(--text-color);
+  overflow: hidden;
+}
+
+.window-header {
+  background: linear-gradient(
+    to right,
+    var(--green-phosphor-dim) 0%,
+    var(--green-phosphor) 50%,
+    var(--green-phosphor-dim) 100%
+  );
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: move;
+  font-family: var(--pixel-font);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--button-dark-shadow);
+}
+
+.window-controls {
+  display: flex;
+  gap: 4px;
+}
+
+.window-button {
+  width: 16px;
+  height: 16px;
+  background: var(--button-face);
+  border: 2px solid;
+  border-color: 
+    var(--button-highlight) 
+    var(--button-dark-shadow) 
+    var(--button-dark-shadow) 
+    var(--button-highlight);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: monospace;
+  font-size: 10px;
+  color: black;
+}
+
+.window-button:hover {
+  background: #DDDDDD;
+}
+
+.window-button:active {
+  border-color: 
+    var(--button-dark-shadow) 
+    var(--button-highlight) 
+    var(--button-highlight) 
+    var(--button-dark-shadow);
+}
+
+.window-content {
+  padding: 16px;
+  overflow: auto;
+  height: calc(100% - 40px);
+}
+
+/* Retro Button */
+.retro-button {
+  background-color: var(--button-face);
+  border: 2px solid;
+  border-color: 
+    var(--button-highlight) 
+    var(--button-dark-shadow) 
+    var(--button-dark-shadow) 
+    var(--button-highlight);
+  color: black;
+  padding: 6px 16px;
+  text-align: center;
+  font-family: var(--terminal-font);
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 4px;
+  min-width: 100px;
+  outline: none;
+}
+
+.retro-button:hover {
+  background-color: #DDDDDD;
+}
+
+.retro-button:active {
+  border-color: 
+    var(--button-dark-shadow) 
+    var(--button-highlight) 
+    var(--button-highlight) 
+    var(--button-dark-shadow);
+  padding: 7px 15px 5px 17px;
+}
+
+/* Retro Input */
+.retro-input {
+  background-color: var(--dark-bg);
+  border: 2px solid;
+  border-color: 
+    var(--button-dark-shadow) 
+    var(--button-highlight) 
+    var(--button-highlight) 
+    var(--button-dark-shadow);
+  color: var(--text-color);
+  padding: 8px;
+  font-family: var(--terminal-font);
+  font-size: 1rem;
+  width: 100%;
+  outline: none;
+}
+
+.retro-input:focus {
+  box-shadow: 0 0 5px var(--text-color);
+}
+
+/* Terminal text effects */
+.blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* Loading progress bar */
+.progress-bar {
+  width: 100%;
+  height: 20px;
+  background-color: var(--dark-bg);
+  border: 2px solid;
+  border-color: 
+    var(--button-dark-shadow) 
+    var(--button-highlight) 
+    var(--button-highlight) 
+    var(--button-dark-shadow);
+  margin: 10px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: var(--green-phosphor);
+  transition: width 0.5s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Desktop icons */
+.desktop-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80px;
+  cursor: pointer;
+  margin: 10px;
+  text-align: center;
+}
+
+.icon-image {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 8px;
+  image-rendering: pixelated;
+}
+
+.icon-label {
+  font-size: 14px;
+  color: var(--text-color);
+  text-shadow: 0 0 5px var(--text-color);
+}
+
+/* Switch for color themes */
+.theme-switch {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.theme-option {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--button-highlight);
+  cursor: pointer;
+}
+
+.theme-option.green {
+  background-color: var(--green-phosphor);
+}
+
+.theme-option.amber {
+  background-color: var(--amber-phosphor);
+}
+
+.theme-option.blue {
+  background-color: var(--blue-phosphor);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--button-face);
+  border: 2px solid;
+  border-color: 
+    var(--button-dark-shadow) 
+    var(--button-highlight) 
+    var(--button-highlight) 
+    var(--button-dark-shadow);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--button-face);
+  border: 2px solid;
+  border-color: 
+    var(--button-highlight) 
+    var(--button-dark-shadow) 
+    var(--button-dark-shadow) 
+    var(--button-highlight);
+}
+
+::-webkit-scrollbar-button {
+  background: var(--button-face);
+  border: 2px solid;
+  border-color: 
+    var(--button-highlight) 
+    var(--button-dark-shadow) 
+    var(--button-dark-shadow) 
+    var(--button-highlight);
+  display: block;
+  height: 16px;
+  width: 16px;
+}
+
+::-webkit-scrollbar-button:vertical:start:decrement {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpolygon points='5,3 8,7 2,7' fill='%23000000'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+::-webkit-scrollbar-button:vertical:end:increment {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpolygon points='5,7 8,3 2,3' fill='%23000000'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+}

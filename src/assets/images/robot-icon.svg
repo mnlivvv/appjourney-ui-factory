@@ -1,0 +1,20 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="48" height="48" fill="none"/>
+  <!-- Robot head -->
+  <rect x="12" y="6" width="24" height="20" fill="#222222" stroke="#33FF33" stroke-width="2"/>
+  <!-- Robot antenna -->
+  <rect x="22" y="2" width="4" height="4" fill="#33FF33"/>
+  <!-- Robot eyes -->
+  <rect x="16" y="12" width="6" height="6" fill="#33FF33"/>
+  <rect x="26" y="12" width="6" height="6" fill="#33FF33"/>
+  <!-- Robot mouth -->
+  <rect x="16" y="22" width="16" height="2" fill="#33FF33"/>
+  <!-- Robot body -->
+  <rect x="16" y="26" width="16" height="12" fill="#222222" stroke="#33FF33" stroke-width="2"/>
+  <!-- Robot arms -->
+  <rect x="6" y="28" width="10" height="4" fill="#222222" stroke="#33FF33" stroke-width="2"/>
+  <rect x="32" y="28" width="10" height="4" fill="#222222" stroke="#33FF33" stroke-width="2"/>
+  <!-- Robot legs -->
+  <rect x="16" y="38" width="6" height="8" fill="#222222" stroke="#33FF33" stroke-width="2"/>
+  <rect x="26" y="38" width="6" height="8" fill="#222222" stroke="#33FF33" stroke-width="2"/>
+</svg>
