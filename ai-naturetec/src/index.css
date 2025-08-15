@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+:root {
+  --forest-primary: #4d8a43;
+  --sky-primary: #3aa6ff;
+  --earth-primary: #b79456;
+  
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #0f1b0e;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: var(--sky-primary);
+  text-decoration: inherit;
+  transition: color 0.3s ease;
+}
+a:hover {
+  color: #5dbaff;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #0f1b0e;
+  background-image: linear-gradient(rgba(15, 27, 14, 0.97), rgba(15, 27, 14, 0.97)), url('/src/assets/images/fractal-pattern.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  line-height: 1.1;
+}
+
+h1 {
+  font-size: 3.2em;
+  background: linear-gradient(to right, var(--forest-primary), var(--sky-primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid var(--forest-primary);
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--forest-primary);
+  color: white;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(to right, var(--earth-primary), var(--sky-primary));
+  transition: width 0.3s ease;
+  z-index: -1;
+}
+
+button:hover {
+  border-color: var(--sky-primary);
+}
+
+button:hover::before {
+  width: 100%;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 3px solid rgba(61, 110, 54, 0.5);
+  outline-offset: 2px;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #e6f0e6;
+  }
+  a:hover {
+    color: #2e85cc;
+  }
+  button {
+    background-color: var(--forest-primary);
+    color: white;
+  }
+  body {
+    background-color: #e6f0e6;
+    background-image: linear-gradient(rgba(230, 240, 230, 0.97), rgba(230, 240, 230, 0.97)), url('/src/assets/images/fractal-pattern.jpg');
+  }
+}
+
+/* Custom classes */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.organic-border {
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
+
+.leaf-pattern {
+  position: relative;
+}
+
+.leaf-pattern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50,10 C70,10 90,30 90,50 C90,70 70,90 50,90 C30,90 10,70 10,50 C10,30 30,10 50,10 Z' fill='none' stroke='rgba(77, 138, 67, 0.1)' stroke-width='2'/%3E%3C/svg%3E");
+  background-size: 150px;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+.gradient-text {
+  background: linear-gradient(to right, var(--forest-primary), var(--sky-primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
