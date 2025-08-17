@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Quicksand', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #F9F7F3;
+  color: #333;
+  min-height: 100vh;
+}
+
+/* Custom utility classes */
+@layer components {
+  .btn {
+    @apply px-6 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-opacity-50;
+  }
+  
+  .btn-primary {
+    @apply bg-sage text-white hover:bg-opacity-90 focus:ring-sage;
+  }
+  
+  .btn-secondary {
+    @apply bg-sky-blue text-white hover:bg-opacity-90 focus:ring-sky-blue;
+  }
+  
+  .btn-earth {
+    @apply bg-earth text-white hover:bg-opacity-90 focus:ring-earth;
+  }
+  
+  .card {
+    @apply bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow duration-300;
+  }
+  
+  .gradient-bg {
+    @apply bg-gradient-to-br from-sage to-sky-blue bg-opacity-10;
+  }
+  
+  .organic-border {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  }
+}
+
+/* Custom animations */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Fluid typography */
+h1 {
+  @apply text-4xl md:text-5xl lg:text-6xl font-bold;
+}
+
+h2 {
+  @apply text-3xl md:text-4xl font-semibold;
+}
+
+h3 {
+  @apply text-2xl md:text-3xl font-medium;
+}
+
+p {
+  @apply text-base md:text-lg leading-relaxed;
+}
