@@ -1,0 +1,73 @@
+:root {
+  --notebook-bg: #f5f5f0;
+  --line-color: #a9c4e2;
+  --text-color: #333;
+  --completed-color: #888;
+  --accent-color: #3e7cb1;
+  --shadow-color: rgba(0, 0, 0, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Indie Flower', cursive, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #e0e0e0;
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.App {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-family: 'Satisfy', cursive, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 2px;
+  background-color: var(--accent-color);
+  opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+  .App {
+    padding: 1rem;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+@font-face {
+  font-family: 'Indie Flower';
+  src: url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+}
+
+@font-face {
+  font-family: 'Satisfy';
+  src: url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+}

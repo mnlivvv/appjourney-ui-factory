@@ -1,0 +1,135 @@
+.todo-item {
+  position: relative;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+  overflow: hidden;
+}
+
+.todo-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.todo-item.completed {
+  background-color: rgba(240, 240, 240, 0.7);
+}
+
+.todo-content {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.todo-checkbox-container {
+  position: relative;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.todo-checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: transparent;
+  border: 2px solid var(--accent-color);
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.todo-checkbox-container:hover input ~ .checkmark {
+  background-color: rgba(62, 124, 177, 0.1);
+}
+
+.todo-checkbox-container input:checked ~ .checkmark {
+  background-color: var(--accent-color);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.todo-checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.todo-checkbox-container .checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.todo-text {
+  flex: 1;
+  font-size: 1.1rem;
+  line-height: 1.4;
+  word-break: break-word;
+  transition: all 0.3s;
+}
+
+.completed .todo-text {
+  color: var(--completed-color);
+  text-decoration: line-through;
+  font-style: italic;
+}
+
+.delete-button {
+  background-color: transparent;
+  border: none;
+  color: #aaa;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.delete-button:hover {
+  color: #e74c3c;
+  background-color: rgba(231, 76, 60, 0.1);
+}
+
+.dog-ear {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.dog-ear img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  transform: rotate(-90deg);
+  opacity: 0.7;
+}
