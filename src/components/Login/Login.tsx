@@ -53,15 +53,17 @@ const Login = ({ setIsLoggedIn }: LoginProps) => {
       // Simulate API call with a delay
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // For demonstration purposes - hardcoded credentials
+      // Accept any username and password combination
       // In a real application, you would validate against a backend service
-      if (username === 'user' && password === 'password') {
+      if (username.trim() && password.trim()) {
         setIsLoggedIn(true);
         // Store login state in localStorage
         localStorage.setItem('isLoggedIn', 'true');
+        // Store the username to display on the home page
+        localStorage.setItem('username', username);
         navigate('/home');
       } else {
-        setError('Invalid username or password');
+        setError('Username and password cannot be empty');
       }
     } catch (error) {
       setError('Login failed. Please try again.');
@@ -78,6 +80,7 @@ const Login = ({ setIsLoggedIn }: LoginProps) => {
         </div>
         <h1>Welcome Back</h1>
         <p className="login-subtitle">Please sign in to continue</p>
+        <p className="login-note">You can use any username and password</p>
         
         {error && <div className="error-message">{error}</div>}
         
@@ -114,7 +117,7 @@ const Login = ({ setIsLoggedIn }: LoginProps) => {
               />
               <label htmlFor="remember">Remember me</label>
             </div>
-            <a href="#" className="forgot-password">Forgot Password?</a>
+            <span className="forgot-password">You can enter any password</span>
           </div>
           
           <button 
@@ -127,7 +130,7 @@ const Login = ({ setIsLoggedIn }: LoginProps) => {
         </form>
         
         <p className="register-link">
-          Don't have an account? <a href="#">Register now</a>
+          No account needed! Just enter any username and password to login.
         </p>
       </div>
     </div>

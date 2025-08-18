@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import './Home.css';
 
 interface HomeProps {
@@ -6,11 +7,21 @@ interface HomeProps {
 }
 
 const Home = ({ setIsLoggedIn }: HomeProps) => {
+  const [username, setUsername] = useState('User');
   const navigate = useNavigate();
+  
+  useEffect(() => {
+    // Get the username from localStorage
+    const storedUsername = localStorage.getItem('username');
+    if (storedUsername) {
+      setUsername(storedUsername);
+    }
+  }, []);
 
   const handleLogout = () => {
     // Clear login state
     localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('username');
     setIsLoggedIn(false);
     navigate('/login');
   };
@@ -26,7 +37,7 @@ const Home = ({ setIsLoggedIn }: HomeProps) => {
       
       <main className="home-content">
         <div className="welcome-message">
-          <h2>Hello, User!</h2>
+          <h2>Hello, {username}!</h2>
           <p>You have successfully logged in to the application.</p>
         </div>
         
