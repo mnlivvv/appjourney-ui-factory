@@ -1,68 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  --primary: #FF6B6B;
+  --secondary: #4ECDC4;
+  --accent-1: #FFE66D;
+  --accent-2: #7A77FF;
+  --accent-3: #FF9F69;
+  --bg-light: #F7F9FC;
+  --text-dark: #2D3748;
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@layer components {
+  .task-card {
+    @apply bg-white rounded-xl p-4 shadow-md transition-all duration-300 hover:shadow-lg border-l-4;
   }
-  a:hover {
-    color: #747bff;
+  
+  .task-card-personal {
+    @apply border-primary;
   }
-  button {
-    background-color: #f9f9f9;
+  
+  .task-card-work {
+    @apply border-secondary;
+  }
+  
+  .task-card-shopping {
+    @apply border-accent-1;
+  }
+  
+  .task-card-health {
+    @apply border-accent-2;
+  }
+  
+  .task-card-education {
+    @apply border-accent-3;
+  }
+  
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-200 transform hover:scale-105 focus:outline-none;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-opacity-90;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-white hover:bg-opacity-90;
+  }
+  
+  .btn-accent {
+    @apply bg-accent-1 text-text-dark hover:bg-opacity-90;
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
+  }
+}
+
+/* Animation classes */
+.bounce-out {
+  animation: bounceOut 0.5s forwards;
+}
+
+@keyframes bounceOut {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  20% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.shake {
+  animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
   }
 }
