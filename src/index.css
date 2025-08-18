@@ -1,12 +1,21 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  /* Playful hand-drawn aesthetic color palette */
+  --pastel-yellow: #fff8e1;
+  --pastel-blue: #a2d2ff;
+  --pastel-pink: #ffafcc;
+  --pastel-green: #a8e6cf;
+  --pastel-purple: #d0a8e6;
+  --charcoal: #4a4a4a;
+  --light-charcoal: #6d6d6d;
+  
+  /* Base styles */
+  font-family: 'Comic Sans MS', 'Marker Felt', cursive;
+  line-height: 1.6;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  color: var(--charcoal);
+  background-color: var(--pastel-yellow);
+  
+  /* Text rendering */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -17,52 +26,89 @@ a {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
+  position: relative;
 }
+
 a:hover {
   color: #535bf2;
 }
 
+a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+  opacity: 0.7;
+}
+
+a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
 }
 
+h2 {
+  font-size: 1.8rem;
+  line-height: 1.3;
+}
+
+h3 {
+  font-size: 1.5rem;
+  line-height: 1.4;
+}
+
+/* Reset button styles to use our custom ones */
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  background: none;
+  border: none;
+  font: inherit;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: inherit;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* Remove default focus outline and use our custom one */
+button:focus,
+button:focus-visible,
+input:focus,
+input:focus-visible {
+  outline: none;
+}
+
+/* Prevent blue highlight on touch for mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Add a subtle transition to all elements */
+* {
+  transition: all 0.2s ease;
+}
+
+/* Create a full-page paper texture background */
+html {
+  background-color: var(--pastel-yellow);
+}
+
+/* Ensure all images don't exceed their container */
+img {
+  max-width: 100%;
+  height: auto;
 }
