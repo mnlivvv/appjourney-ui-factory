@@ -1,4 +1,4 @@
-import { InputHTMLAttributes } from 'react';
+import type { InputHTMLAttributes } from 'react';
 import './ArcadeInput.css';
 
 interface ArcadeInputProps extends InputHTMLAttributes<HTMLInputElement> {
