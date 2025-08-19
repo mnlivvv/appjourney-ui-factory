@@ -1,42 +1,157 @@
 #root {
-  max-width: 1280px;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Main Container */
+.app-container {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Background Gradients */
+.bg-gradient-1 {
+  background: linear-gradient(135deg, #6A0572, #AB83A1);
+}
+
+.bg-gradient-2 {
+  background: linear-gradient(135deg, #1A535C, #4ECDC4);
+}
+
+.bg-gradient-3 {
+  background: linear-gradient(135deg, #FF6B6B, #FFD166);
+}
+
+.bg-gradient-4 {
+  background: linear-gradient(135deg, #006E7F, #92E6A7);
+}
+
+.bg-gradient-5 {
+  background: linear-gradient(135deg, #2E294E, #EFBCD5);
+}
+
+/* Background Patterns */
+.bg-pattern-1 {
+  background-color: #2E294E;
+  background-image: linear-gradient(30deg, #4ECDC4 12%, transparent 12.5%, transparent 87%, #4ECDC4 87.5%, #4ECDC4),
+  linear-gradient(150deg, #4ECDC4 12%, transparent 12.5%, transparent 87%, #4ECDC4 87.5%, #4ECDC4),
+  linear-gradient(30deg, #4ECDC4 12%, transparent 12.5%, transparent 87%, #4ECDC4 87.5%, #4ECDC4),
+  linear-gradient(150deg, #4ECDC4 12%, transparent 12.5%, transparent 87%, #4ECDC4 87.5%, #4ECDC4),
+  linear-gradient(60deg, #4ECDC477 25%, transparent 25.5%, transparent 75%, #4ECDC477 75%, #4ECDC477),
+  linear-gradient(60deg, #4ECDC477 25%, transparent 25.5%, transparent 75%, #4ECDC477 75%, #4ECDC477);
+  background-size: 20px 35px;
+  background-position: 0 0, 0 0, 10px 18px, 10px 18px, 0 0, 10px 18px;
+}
+
+.bg-pattern-2 {
+  background-color: #1A535C;
+  background-image: radial-gradient(#FF6B6B 2px, transparent 2px);
+  background-size: 20px 20px;
+}
+
+.bg-pattern-3 {
+  background-color: #2E294E;
+  background-image: 
+    linear-gradient(135deg, #4ECDC422 25%, transparent 25%),
+    linear-gradient(225deg, #4ECDC422 25%, transparent 25%),
+    linear-gradient(45deg, #4ECDC422 25%, transparent 25%),
+    linear-gradient(315deg, #4ECDC422 25%, #2E294E 25%);
+  background-position: 10px 0, 10px 0, 0 0, 0 0;
+  background-size: 20px 20px;
+  background-repeat: repeat;
+}
+
+/* Content */
+.content-wrapper {
+  max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+main {
+  flex: 1;
+  overflow: hidden;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.main-content {
+  display: flex;
+  gap: 2rem;
+  height: 100%;
+  max-height: calc(100vh - 200px);
+}
+
+.left-panel {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.right-panel {
+  flex: 2;
+  overflow: hidden;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .main-content {
+    flex-direction: column;
+    gap: 1.5rem;
+    max-height: none;
+    overflow-y: auto;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .left-panel, .right-panel {
+    width: 100%;
+    overflow: visible;
+  }
+  
+  .content-wrapper {
+    padding: 1rem;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@media (max-width: 600px) {
+  .todo-list-filters {
+    flex-direction: column;
+    align-items: stretch;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+  
+  .filter-group, .filter-dropdown {
+    width: 100%;
+  }
+  
+  .todo-item-details {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .todo-actions, .edit-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
 }

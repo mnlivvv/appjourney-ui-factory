@@ -1,0 +1,247 @@
+.todo-item {
+  background-color: rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.todo-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.todo-item.completed {
+  opacity: 0.7;
+}
+
+.todo-item.expanded {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.todo-item.past-due {
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+}
+
+.todo-item-header {
+  padding: 1rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.todo-item-main {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.checkbox-container {
+  position: relative;
+}
+
+.todo-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.3rem;
+  height: 1.3rem;
+  border: 2px solid var(--checkbox-color, #4ECDC4);
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.todo-checkbox:checked {
+  background-color: var(--checkbox-color, #4ECDC4);
+}
+
+.todo-checkbox:checked::after {
+  content: '✓';
+  position: absolute;
+  color: white;
+  font-size: 0.8rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.todo-checkbox:hover {
+  transform: scale(1.1);
+}
+
+.todo-title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+  flex-grow: 1;
+}
+
+.todo-item.completed .todo-title {
+  text-decoration: line-through;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.edit-title-input {
+  font-size: 1rem;
+  border: none;
+  border-bottom: 2px solid #4ECDC4;
+  background-color: transparent;
+  color: white;
+  padding: 0.3rem 0;
+  width: 100%;
+}
+
+.edit-title-input:focus {
+  outline: none;
+}
+
+.todo-item-details {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.category-badge, .priority-badge, .due-date {
+  padding: 0.25rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.due-date {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.due-date.past-due {
+  background-color: rgba(255, 107, 107, 0.2);
+  color: #FF6B6B;
+}
+
+.todo-actions, .edit-actions {
+  margin-left: auto;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.action-btn {
+  border: none;
+  background: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.action-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.action-btn.edit:hover {
+  color: #4ECDC4;
+}
+
+.action-btn.delete:hover {
+  color: #FF6B6B;
+}
+
+.action-btn.save {
+  color: #4ECDC4;
+}
+
+.action-btn.cancel {
+  color: #FF6B6B;
+}
+
+.todo-item-content {
+  padding: 0 1rem 1rem;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.description {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+}
+
+.creation-date {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.edit-expanded-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.edit-description {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+  resize: vertical;
+  min-height: 80px;
+}
+
+.edit-description:focus {
+  outline: none;
+  border-color: #4ECDC4;
+}
+
+.edit-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.edit-group {
+  flex: 1;
+  min-width: 150px;
+}
+
+.edit-group label {
+  display: block;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 0.3rem;
+}
+
+.edit-select, .edit-date {
+  width: 100%;
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+}
+
+.edit-select:focus, .edit-date:focus {
+  outline: none;
+  border-color: #4ECDC4;
+}

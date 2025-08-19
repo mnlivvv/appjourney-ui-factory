@@ -1,0 +1,265 @@
+.dashboard-container {
+  background-color: rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.dashboard-title {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.dashboard-card {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1.2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-card h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Completion Rate Card */
+.progress-container {
+  height: 12px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #4ECDC4, #FF6B6B);
+  border-radius: 6px;
+  transition: width 1s ease-in-out;
+  position: relative;
+}
+
+.progress-text {
+  position: absolute;
+  right: 8px;
+  top: -18px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Today's Tasks Card */
+.tasks-today {
+  text-align: center;
+}
+
+.today-tasks-count {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.count {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #4ECDC4;
+  line-height: 1;
+}
+
+.label {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.overdue-warning {
+  font-size: 0.85rem;
+  color: #FF6B6B;
+  padding: 0.3rem 0.7rem;
+  background-color: rgba(255, 107, 107, 0.1);
+  border-radius: 12px;
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+.overdue-count {
+  font-weight: 600;
+}
+
+/* Weekly View Card */
+.week-chart {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 120px;
+  padding-top: 1rem;
+}
+
+.day-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.day-bar {
+  width: 70%;
+  min-height: 4px;
+  border-radius: 2px;
+  position: relative;
+  transition: height 0.5s ease;
+}
+
+.day-count {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.day-label {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Category Breakdown Card */
+.category-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.category-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.category-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 80px;
+}
+
+.category-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+.category-name {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.category-progress-container {
+  flex: 1;
+  height: 8px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.category-progress {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.category-stats {
+  width: 40px;
+  text-align: right;
+}
+
+.category-count {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Priority Breakdown Card */
+.priority-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.priority-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.priority-label {
+  width: 60px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.priority-label.high {
+  color: #FF6B6B;
+}
+
+.priority-label.medium {
+  color: #FFD166;
+}
+
+.priority-label.low {
+  color: #4ECDC4;
+}
+
+.priority-bar-container {
+  flex: 1;
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.priority-bar {
+  height: 100%;
+  border-radius: 5px;
+  transition: width 0.5s ease;
+}
+
+.priority-bar.high {
+  background-color: #FF6B6B;
+}
+
+.priority-bar.medium {
+  background-color: #FFD166;
+}
+
+.priority-bar.low {
+  background-color: #4ECDC4;
+}
+
+.priority-count {
+  width: 30px;
+  text-align: right;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+}
