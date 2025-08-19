@@ -1,34 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect } from 'react'
+import TodoList from './components/TodoList'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  // Create audio directory for sound effects if it doesn't exist
+  useEffect(() => {
+    // Note: In a production app, sound would be preloaded or handled differently
+    // This is just for demo purposes
+    console.log('Todo Arcade initialized');
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="arcade-cabinet">
+      <div className="cabinet-top">
+        <div className="speaker left"></div>
+        <h1 className="cabinet-title">TODO ARCADE</h1>
+        <div className="speaker right"></div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+      
+      <TodoList />
+      
+      <div className="cabinet-controls">
+        <div className="joystick"></div>
+        <div className="buttons">
+          <div className="button red"></div>
+          <div className="button blue"></div>
+        </div>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   )
 }
 

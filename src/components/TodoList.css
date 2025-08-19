@@ -1,0 +1,374 @@
+/* Import arcade-style font */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* Base styles and variables */
+:root {
+  --bg-color: #121212;
+  --screen-bg: #000000;
+  --neon-blue: #00f2ff;
+  --hot-pink: #ff00ff;
+  --bright-yellow: #f7ff00;
+  --success-green: #00ff00;
+  --danger-red: #ff0050;
+  --text-color: #ffffff;
+  --secondary-text: #33ff33;
+  --shadow-color: rgba(0, 242, 255, 0.7);
+}
+
+/* Main container */
+.todo-arcade {
+  font-family: 'Press Start 2P', monospace;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0 0 5px var(--shadow-color);
+}
+
+/* Screen and CRT effect */
+.screen {
+  background-color: var(--screen-bg);
+  border-radius: 10px;
+  border: 20px solid #222;
+  box-shadow: 
+    0 0 0 5px #111, 
+    0 0 10px 10px rgba(0, 242, 255, 0.3),
+    inset 0 0 20px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  position: relative;
+  padding: 30px;
+}
+
+.scan-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.1),
+      rgba(0, 0, 0, 0.1) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+  pointer-events: none;
+  z-index: 10;
+}
+
+.screen-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Title */
+.game-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: var(--hot-pink);
+  text-shadow: 
+    0 0 10px var(--hot-pink),
+    0 0 20px var(--hot-pink);
+  animation: flicker 2s infinite alternate;
+}
+
+/* High Score Table (Todo List) */
+.high-score-table {
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 3px solid var(--neon-blue);
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 0 10px var(--neon-blue);
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 60px 1fr 120px 60px;
+  gap: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  border-bottom: 2px solid var(--neon-blue);
+  color: var(--bright-yellow);
+  font-size: 0.8rem;
+}
+
+.no-tasks {
+  text-align: center;
+  padding: 30px 0;
+  color: var(--neon-blue);
+  font-size: 0.9rem;
+}
+
+.todo-items {
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--hot-pink) var(--bg-color);
+}
+
+.todo-items::-webkit-scrollbar {
+  width: 8px;
+}
+
+.todo-items::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+.todo-items::-webkit-scrollbar-thumb {
+  background-color: var(--hot-pink);
+  border-radius: 4px;
+}
+
+.todo-item {
+  display: grid;
+  grid-template-columns: 60px 1fr 120px 60px;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px dashed rgba(0, 242, 255, 0.3);
+  transition: all 0.2s ease;
+}
+
+.todo-item:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.todo-item.completed .mission {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.todo-item.completed .status {
+  color: var(--success-green);
+}
+
+.rank {
+  color: var(--bright-yellow);
+}
+
+.mission {
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.mission:hover {
+  color: var(--bright-yellow);
+  text-shadow: 0 0 5px var(--bright-yellow);
+}
+
+.status {
+  color: var(--secondary-text);
+  font-size: 0.7rem;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: var(--danger-red);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete-btn:hover {
+  color: var(--bright-yellow);
+  text-shadow: 0 0 5px var(--bright-yellow);
+}
+
+/* Control Panel */
+.control-panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.coin-slot {
+  display: flex;
+  flex: 1;
+  gap: 10px;
+}
+
+.todo-input {
+  background-color: #222;
+  border: 2px solid var(--hot-pink);
+  padding: 12px 15px;
+  color: var(--text-color);
+  font-family: 'Press Start 2P', monospace;
+  flex: 1;
+  font-size: 0.8rem;
+  transition: all 0.3s;
+}
+
+.todo-input:focus {
+  outline: none;
+  border-color: var(--bright-yellow);
+  box-shadow: 0 0 10px var(--bright-yellow);
+}
+
+.insert-coin-btn {
+  background-color: var(--hot-pink);
+  border: none;
+  color: var(--text-color);
+  padding: 12px 20px;
+  cursor: pointer;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.8rem;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 10px var(--hot-pink);
+}
+
+.insert-coin-btn::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.insert-coin-btn:hover::before {
+  opacity: 1;
+}
+
+.insert-coin-btn:disabled {
+  background-color: #555;
+  color: #888;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* Sound toggle */
+.sound-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sound-label {
+  font-size: 0.7rem;
+  color: var(--neon-blue);
+}
+
+.toggle-switch {
+  width: 60px;
+  height: 30px;
+  background-color: #222;
+  border-radius: 15px;
+  padding: 5px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.toggle-switch.on {
+  background-color: var(--success-green);
+  box-shadow: 0 0 10px var(--success-green);
+}
+
+.toggle-slider {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  top: 5px;
+  left: 5px;
+  transition: transform 0.3s;
+}
+
+.toggle-switch.on .toggle-slider {
+  transform: translateX(30px);
+}
+
+/* Animations */
+@keyframes flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    opacity: 1;
+  }
+  20%, 24%, 55% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes blink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+.blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Glitch effect */
+.glitch {
+  position: relative;
+}
+
+.glitch::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 0, 255, 0.2);
+  mix-blend-mode: overlay;
+  z-index: 100;
+}
+
+.glitch::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(transparent, transparent 50%, rgba(0, 255, 255, 0.1) 50%, transparent);
+  background-size: 100% 4px;
+  z-index: 101;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .todo-arcade {
+    padding: 10px;
+  }
+  
+  .game-title {
+    font-size: 1.5rem;
+  }
+  
+  .table-header, .todo-item {
+    grid-template-columns: 40px 1fr 100px 40px;
+    font-size: 0.7rem;
+  }
+  
+  .control-panel {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .sound-toggle {
+    align-self: flex-end;
+  }
+}

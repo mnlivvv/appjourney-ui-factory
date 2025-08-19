@@ -1,0 +1,54 @@
+.arcade-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.arcade-input-label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.7rem;
+  color: #00f2ff;
+  text-shadow: 0 0 5px rgba(0, 242, 255, 0.5);
+}
+
+.arcade-input {
+  font-family: 'Press Start 2P', monospace;
+  background-color: #111;
+  color: #fff;
+  border: 2px solid #00f2ff;
+  padding: 10px 12px;
+  font-size: 0.8rem;
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 242, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.arcade-input:focus {
+  border-color: #ff00ff;
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+}
+
+.arcade-input::placeholder {
+  color: #666;
+  opacity: 1;
+}
+
+/* Disabled state */
+.arcade-input:disabled {
+  background-color: #333;
+  border-color: #555;
+  color: #888;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Special animation for the insertion coin effect */
+@keyframes flash {
+  0%, 100% { border-color: #00f2ff; }
+  50% { border-color: #ff00ff; }
+}
+
+.arcade-input.flashing {
+  animation: flash 1s infinite;
+}

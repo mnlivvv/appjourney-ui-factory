@@ -1,11 +1,20 @@
+/* Import arcade-style font */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --primary-bg: #121212;
+  --text-color: rgba(255, 255, 255, 0.87);
+  --accent-blue: #00f2ff;
+  --accent-pink: #ff00ff;
+  --accent-yellow: #f7ff00;
+  
+  font-family: 'Press Start 2P', system-ui, monospace;
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color-scheme: dark;
+  color: var(--text-color);
+  background-color: var(--primary-bg);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,11 +24,13 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--accent-blue);
   text-decoration: inherit;
 }
+
 a:hover {
-  color: #535bf2;
+  color: var(--accent-pink);
+  text-shadow: 0 0 5px var(--accent-pink);
 }
 
 body {
@@ -28,41 +39,77 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: var(--primary-bg);
+  overflow-x: hidden;
+  letter-spacing: 1px;
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 2em;
   line-height: 1.1;
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
+  border-radius: 0;
+  border: 2px solid var(--accent-blue);
   padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  font-size: 0.8em;
+  font-weight: 400;
+  font-family: 'Press Start 2P', monospace;
+  background-color: transparent;
+  color: var(--text-color);
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  transition: all 0.25s;
+  text-transform: uppercase;
 }
 
+button:hover {
+  border-color: var(--accent-pink);
+  background-color: var(--accent-pink);
+  box-shadow: 0 0 10px var(--accent-pink);
+}
+
+button:focus,
+button:focus-visible {
+  outline: 3px solid var(--accent-yellow);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-pink);
+  border: 1px solid var(--accent-blue);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-blue);
+}
+
+/* Prevent media queries for light mode */
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: var(--text-color);
+    background-color: var(--primary-bg);
   }
   a:hover {
-    color: #747bff;
+    color: var(--accent-pink);
   }
   button {
-    background-color: #f9f9f9;
+    background-color: transparent;
   }
+}
+
+/* Pixelated rendering for images */
+img {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
 }

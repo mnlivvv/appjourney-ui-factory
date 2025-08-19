@@ -1,0 +1,85 @@
+.arcade-header {
+  position: relative;
+  padding: 1.5rem 0;
+  text-align: center;
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+.arcade-header-glitch {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg, 
+    transparent 0%, 
+    rgba(255, 0, 255, 0.1) 10%,
+    transparent 10.5%,
+    transparent 20%, 
+    rgba(0, 242, 255, 0.1) 20.5%, 
+    transparent 21%,
+    transparent 40%, 
+    rgba(255, 0, 255, 0.1) 40.5%, 
+    transparent 41%,
+    transparent 60%, 
+    rgba(0, 242, 255, 0.1) 60.5%, 
+    transparent 61%,
+    transparent 80%, 
+    rgba(255, 0, 255, 0.1) 80.5%, 
+    transparent 81%
+  );
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.arcade-header-title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 2.5rem;
+  margin: 0;
+  padding: 0;
+  color: #ff00ff;
+  text-shadow: 
+    0 0 10px #ff00ff,
+    0 0 20px #ff00ff,
+    0 0 30px #ff00ff;
+  position: relative;
+  letter-spacing: 2px;
+  animation: flicker 3s infinite alternate;
+}
+
+.arcade-header-subtitle {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1rem;
+  margin: 1rem 0 0 0;
+  padding: 0;
+  color: #00f2ff;
+  text-shadow: 0 0 5px #00f2ff;
+  letter-spacing: 1px;
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+    text-shadow: 
+      0 0 10px #ff00ff,
+      0 0 20px #ff00ff,
+      0 0 30px #ff00ff;
+  }
+  20%, 24%, 55% {
+    opacity: 0.7;
+    text-shadow: none;
+  }
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .arcade-header-title {
+    font-size: 1.8rem;
+  }
+  
+  .arcade-header-subtitle {
+    font-size: 0.8rem;
+  }
+}

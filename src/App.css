@@ -1,42 +1,170 @@
+/* Import arcade-style font */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+  --cabinet-color: #151420;
+  --cabinet-highlight: #ff00ff;
+  --button-red: #ff0050;
+  --button-blue: #00f2ff;
+  --screen-glow: rgba(0, 242, 255, 0.4);
+}
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  max-width: 100vw;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #121212;
+  overflow-x: hidden;
+}
+
+/* Arcade Cabinet Styling */
+.arcade-cabinet {
+  width: 100%;
+  max-width: 900px;
+  background-color: var(--cabinet-color);
+  border-radius: 10px;
+  box-shadow: 
+    0 0 20px rgba(255, 0, 255, 0.4),
+    0 0 40px rgba(0, 242, 255, 0.2);
+  padding: 30px;
+  padding-bottom: 60px;
+  margin: 20px;
+  position: relative;
+}
+
+.cabinet-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.cabinet-title {
+  font-family: 'Press Start 2P', cursive;
+  color: var(--cabinet-highlight);
+  font-size: 1.5rem;
   text-align: center;
+  text-shadow: 
+    0 0 10px var(--cabinet-highlight),
+    0 0 20px var(--cabinet-highlight);
+  margin: 0;
+  flex: 1;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.speaker {
+  width: 80px;
+  height: 80px;
+  background: 
+    radial-gradient(circle, transparent 30%, #222 30%),
+    radial-gradient(circle, transparent 33%, #222 33%),
+    #333;
+  background-size: 15px 15px;
+  border-radius: 50%;
+  border: 5px solid #222;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.speaker.left {
+  margin-right: 20px;
+}
+
+.speaker.right {
+  margin-left: 20px;
+}
+
+/* Cabinet Controls */
+.cabinet-controls {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.joystick {
+  width: 60px;
+  height: 60px;
+  background-color: #222;
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.joystick::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 40px;
+  background-color: #111;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 
+    0 0 5px rgba(0, 0, 0, 0.8),
+    0 4px 0 #111;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.button:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.8), 0 0 0 #111;
+}
+
+.button.red {
+  background-color: var(--button-red);
+  box-shadow: 
+    0 0 10px var(--button-red),
+    0 4px 0 #111;
+}
+
+.button.blue {
+  background-color: var(--button-blue);
+  box-shadow: 
+    0 0 10px var(--button-blue),
+    0 4px 0 #111;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .arcade-cabinet {
+    padding: 15px;
+    margin: 10px;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .cabinet-top {
+    flex-direction: column;
+    gap: 15px;
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  
+  .speaker {
+    width: 60px;
+    height: 60px;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+  
+  .speaker.left, .speaker.right {
+    margin: 0;
+  }
+  
+  .cabinet-controls {
+    flex-direction: column;
+    gap: 20px;
+  }
 }
