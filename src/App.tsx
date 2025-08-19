@@ -1,35 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { TodoProvider } from './context/TodoContext';
+import Header from './components/Header';
+import TodoForm from './components/TodoForm';
+import TodoList from './components/TodoList';
+import './styles/App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <TodoProvider>
+      <div className="app-container">
+        <Header />
+        
+        <main className="app-content">
+          <div className="board-container">
+            <TodoForm />
+            <TodoList />
+            
+            {/* Decorative stationery elements */}
+            <div className="stationery-elements">
+              <div className="stationery-element pencil"></div>
+              <div className="stationery-element eraser"></div>
+            </div>
+          </div>
+        </main>
+        
+        <footer className="footer">
+          <p>My Skeuomorphic Todo App &copy; {new Date().getFullYear()}</p>
+        </footer>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </TodoProvider>
+  );
 }
 
-export default App
+export default App;
