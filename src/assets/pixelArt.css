@@ -1,0 +1,181 @@
+/* CSS-based pixel art icons */
+
+.pixel-icon {
+  display: inline-block;
+  position: relative;
+  width: 24px;
+  height: 24px;
+  image-rendering: pixelated;
+  background-color: transparent;
+}
+
+/* Joystick icon */
+.icon-joystick {
+  background: 
+    /* base */
+    linear-gradient(to bottom, 
+      transparent 50%, 
+      var(--neon-blue) 50%, 
+      var(--neon-blue) 75%, 
+      var(--dark-bg) 75%
+    ),
+    /* stick */
+    linear-gradient(to right,
+      transparent 37.5%,
+      var(--neon-blue) 37.5%,
+      var(--neon-blue) 62.5%,
+      transparent 62.5%
+    ),
+    /* knob */
+    radial-gradient(
+      circle at center,
+      var(--neon-pink) 0%,
+      var(--neon-pink) 20%,
+      transparent 20%
+    );
+}
+
+/* Trophy icon */
+.icon-trophy {
+  background:
+    /* cup top */
+    linear-gradient(to right,
+      transparent 25%,
+      var(--neon-yellow) 25%,
+      var(--neon-yellow) 75%,
+      transparent 75%
+    ),
+    /* cup body */
+    linear-gradient(to bottom,
+      transparent 25%,
+      var(--neon-yellow) 25%,
+      var(--neon-yellow) 62.5%,
+      transparent 62.5%
+    ),
+    /* base */
+    linear-gradient(to right,
+      transparent 37.5%,
+      var(--neon-yellow) 37.5%,
+      var(--neon-yellow) 62.5%,
+      transparent 62.5%
+    );
+  background-position:
+    0 0,
+    0 0,
+    0 75%;
+  background-repeat: no-repeat;
+}
+
+/* Coin icon */
+.icon-coin {
+  background: 
+    radial-gradient(
+      circle at center,
+      var(--neon-yellow) 0%,
+      var(--neon-yellow) 35%,
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at center,
+      transparent 0%,
+      transparent 25%,
+      var(--dark-bg) 25%,
+      var(--dark-bg) 30%,
+      transparent 30%
+    );
+}
+
+/* Star icon */
+.icon-star {
+  clip-path: polygon(
+    50% 0%, 
+    61% 35%, 
+    98% 35%, 
+    68% 57%, 
+    79% 91%, 
+    50% 70%, 
+    21% 91%, 
+    32% 57%, 
+    2% 35%, 
+    39% 35%
+  );
+  background-color: var(--neon-yellow);
+}
+
+/* Heart icon */
+.icon-heart {
+  background: 
+    radial-gradient(
+      circle at 25% 25%,
+      var(--neon-red) 0%,
+      var(--neon-red) 30%,
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 75% 25%,
+      var(--neon-red) 0%,
+      var(--neon-red) 30%,
+      transparent 30%
+    ),
+    linear-gradient(
+      to bottom,
+      transparent 40%,
+      var(--neon-red) 40%,
+      var(--neon-red) 70%,
+      transparent 70%
+    );
+  clip-path: polygon(
+    50% 100%, 
+    0% 40%, 
+    25% 0%, 
+    50% 25%, 
+    75% 0%, 
+    100% 40%
+  );
+}
+
+/* Ghost icon */
+.icon-ghost {
+  background: linear-gradient(
+    to bottom,
+    var(--neon-blue) 0%,
+    var(--neon-blue) 75%,
+    transparent 75%
+  );
+  clip-path: polygon(
+    0% 25%,
+    0% 75%,
+    25% 75%,
+    25% 100%,
+    50% 75%,
+    75% 100%,
+    75% 75%,
+    100% 75%,
+    100% 25%,
+    75% 0%,
+    25% 0%
+  );
+}
+
+/* Skull icon */
+.icon-skull {
+  background-color: var(--neon-yellow);
+  clip-path: polygon(
+    25% 25%,
+    25% 37.5%,
+    37.5% 37.5%,
+    37.5% 50%,
+    25% 50%,
+    25% 75%,
+    37.5% 87.5%,
+    62.5% 87.5%,
+    75% 75%,
+    75% 50%,
+    62.5% 50%,
+    62.5% 37.5%,
+    75% 37.5%,
+    75% 25%,
+    62.5% 12.5%,
+    37.5% 12.5%
+  );
+}
