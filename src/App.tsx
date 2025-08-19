@@ -1,34 +1,65 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { DragDropContext } from 'react-beautiful-dnd'
+import Confetti from 'react-confetti'
 import './App.css'
 
+// Components
+import Header from './components/Header'
+import TodoInput from './components/TodoInput'
+import TodoList from './components/TodoList'
+import AddButton from './components/AddButton'
+
+// Hooks
+import { useTodos } from './hooks/useTodos'
+import { useQuote } from './hooks/useQuote'
+import { useWindowSize } from './hooks/useWindowSize'
+
 function App() {
-  const [count, setCount] = useState(0)
+  // Get quote from custom hook
+  const quote = useQuote();
+  
+  // Get todos functionality from custom hook
+  const {
+    todos,
+    inputValue,
+    setInputValue,
+    showConfetti,
+    addTodo,
+    toggleTodo,
+    deleteTodo,
+    handleDragEnd
+  } = useTodos();
+  
+  // Get window size for confetti
+  const windowSize = useWindowSize();
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="app-container">
+      {showConfetti && (
+        <Confetti
+          width={windowSize.width}
+          height={windowSize.height}
+          recycle={false}
+          numberOfPieces={200}
+        />
+      )}
+      
+      <Header quote={quote} />
+      <TodoInput 
+        inputValue={inputValue} 
+        setInputValue={setInputValue} 
+        addTodo={addTodo} 
+      />
+
+      <DragDropContext onDragEnd={handleDragEnd}>
+        <TodoList 
+          todos={todos} 
+          toggleTodo={toggleTodo} 
+          deleteTodo={deleteTodo} 
+        />
+      </DragDropContext>
+
+      <AddButton addTodo={addTodo} />
+    </div>
   )
 }
 
