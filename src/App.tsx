@@ -1,34 +1,102 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect } from 'react'
+import { v4 as uuidv4 } from 'uuid'
+import { motion } from 'framer-motion'
+import '@fontsource/playfair-display/700.css'
+import '@fontsource/roboto/400.css'
+import '@fontsource/roboto/500.css'
 import './App.css'
 
+// Components
+import TodoForm from './components/TodoForm'
+import TodoList from './components/TodoList'
+import TodoFilter from './components/TodoFilter'
+
+// Types
+import { Todo, Filter } from './types'
+
 function App() {
-  const [count, setCount] = useState(0)
+  const [todos, setTodos] = useState<Todo[]>(() => {
+    const savedTodos = localStorage.getItem('todos')
+    if (savedTodos) {
+      try {
+        return JSON.parse(savedTodos).map((todo: any) => ({
+          ...todo,
+          createdAt: new Date(todo.createdAt)
+        }))
+      } catch (e) {
+        console.error('Error parsing todos from localStorage', e)
+        return []
+      }
+    }
+    return []
+  })
+  const [filter, setFilter] = useState<Filter>('all')
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos))
+  }, [todos])
+
+  const addTodo = (text: string) => {
+    const newTodo: Todo = {
+      id: uuidv4(),
+      text,
+      completed: false,
+      createdAt: new Date()
+    }
+    setTodos([newTodo, ...todos])
+  }
+
+  const toggleTodo = (id: string) => {
+    setTodos(todos.map(todo => 
+      todo.id === id ? { ...todo, completed: !todo.completed } : todo
+    ))
+  }
+
+  const deleteTodo = (id: string) => {
+    setTodos(todos.filter(todo => todo.id !== id))
+  }
+
+  const activeCount = todos.filter(todo => !todo.completed).length
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="app-container">
+      <motion.header 
+        className="app-header"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <h1 className="app-title">Luxe Tasks</h1>
+        <p className="text-gold">Elegance in organization</p>
+      </motion.header>
+
+      <motion.div 
+        className="todo-container card"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+      >
+        <div className="todo-header">
+          <h2>Your Tasks</h2>
+        </div>
+        
+        <TodoForm onAddTodo={addTodo} />
+        
+        <TodoFilter 
+          filter={filter} 
+          onFilterChange={setFilter} 
+          activeCount={activeCount}
+          totalCount={todos.length}
+        />
+        
+        <TodoList 
+          todos={todos} 
+          filter={filter} 
+          onToggleTodo={toggleTodo} 
+          onDeleteTodo={deleteTodo}
+        />
+      </motion.div>
+    </div>
   )
 }
 
