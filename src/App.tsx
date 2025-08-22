@@ -1,35 +1,55 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import { GameProvider } from './context/GameContext';
+import Character from './components/Character';
+import TodoList from './components/TodoList';
+import TodoForm from './components/TodoForm';
+import Achievements from './components/Achievements';
+import GameSettings from './components/GameSettings';
+import LevelUpModal from './components/LevelUpModal';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [soundEnabled, setSoundEnabled] = useState(true);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <GameProvider>
+      <div className="app-container">
+        <div className="app-content">
+          <header className="app-header">
+            <h1 className="app-title">Quest Journal</h1>
+            <p className="app-subtitle">Transform your tasks into epic adventures</p>
+            <button 
+              className="sound-toggle" 
+              onClick={() => setSoundEnabled(!soundEnabled)}
+              aria-label={soundEnabled ? 'Mute sound' : 'Enable sound'}
+            >
+              {soundEnabled ? '🔊' : '🔇'}
+            </button>
+          </header>
+          
+          <main className="app-main">
+            <div className="main-content">
+              <TodoForm />
+              <TodoList />
+            </div>
+            
+            <aside className="sidebar">
+              <Character />
+              <Achievements />
+              <GameSettings />
+            </aside>
+          </main>
+          
+          <footer className="app-footer">
+            <p>Quest Journal - Your Adventure Awaits</p>
+          </footer>
+        </div>
+        
+        {/* Level up modal */}
+        <LevelUpModal />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </GameProvider>
+  );
 }
 
-export default App
+export default App;

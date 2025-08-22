@@ -1,11 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=VT323&family=Press+Start+2P&display=swap');
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* Game theme colors */
+  --primary-dark: #191919;
+  --secondary-dark: #2c1654;
+  --primary-accent: #6e41d4;
+  --secondary-accent: #4a9df3;
+  --gold: #d4af37;
+  --success: #4caf50;
+  --warning: #ff9800;
+  --danger: #f44336;
+  --text-light: rgba(255, 255, 255, 0.87);
+  --text-muted: #aaa;
+
+  font-family: 'VT323', monospace;
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color-scheme: dark;
+  color: var(--text-light);
+  background-color: var(--primary-dark);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -13,56 +27,92 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--secondary-accent);
   text-decoration: inherit;
+  transition: color 0.3s ease;
 }
+
 a:hover {
-  color: #535bf2;
+  color: var(--primary-accent);
+  text-shadow: 0 0 5px rgba(110, 65, 212, 0.5);
 }
 
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  flex-direction: column;
   min-width: 320px;
   min-height: 100vh;
+  background-color: #000;
+}
+
+h1, h2, h3 {
+  font-family: 'Cinzel', serif;
+  line-height: 1.1;
+  margin: 0 0 1rem 0;
+  color: var(--gold);
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+p {
+  margin: 0 0 1rem 0;
 }
 
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  font-family: 'VT323', monospace;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: var(--text-light);
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  transition: all 0.3s ease;
 }
 
+button:hover {
+  border-color: var(--primary-accent);
+  background-color: rgba(110, 65, 212, 0.2);
+  transform: translateY(-2px);
+}
+
+button:focus,
+button:focus-visible {
+  outline: 2px solid var(--primary-accent);
+  outline-offset: 2px;
+}
+
+input, textarea, select {
+  font-family: 'VT323', monospace;
+  font-size: 1rem;
+}
+
+/* Disable light mode styles */
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: var(--text-light);
+    background-color: var(--primary-dark);
   }
-  a:hover {
-    color: #747bff;
-  }
+  
   button {
-    background-color: #f9f9f9;
+    background-color: rgba(0, 0, 0, 0.5);
   }
 }
