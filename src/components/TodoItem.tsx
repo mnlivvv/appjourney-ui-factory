@@ -48,7 +48,7 @@ const TodoItem = ({ todo, onToggle, onDelete }: TodoItemProps) => {
           </div>
           
           <div className="todo-date">
-            {todo.createdAt.toLocaleDateString('en-US', {
+            {new Date(todo.createdAt).toLocaleDateString('en-US', {
               month: 'short',
               day: 'numeric'
             })}

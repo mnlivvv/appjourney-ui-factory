@@ -41,10 +41,7 @@ body {
   font-family: var(--font-sans);
   color: var(--white);
   background-color: var(--dark-navy);
-  background-image: url('./assets/images/marble-texture.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  background: linear-gradient(135deg, var(--charcoal) 0%, var(--dark-navy) 100%);
   min-height: 100vh;
   display: flex;
   align-items: center;

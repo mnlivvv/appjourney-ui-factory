@@ -5,7 +5,7 @@ export interface Todo {
   text: string;
   completed: boolean;
   priority: Priority;
-  createdAt: Date;
+  createdAt: Date | string;
 }
 
 export const priorityLevels: Record<Priority, { label: string, color: string }> = {

@@ -24,7 +24,9 @@ const TodoList = ({ todos, onToggle, onDelete, filter }: TodoListProps) => {
     if (priorityDiff !== 0) return priorityDiff;
     
     // Then sort by date (newest first)
-    return b.createdAt.getTime() - a.createdAt.getTime();
+    const dateA = a.createdAt instanceof Date ? a.createdAt : new Date(a.createdAt);
+    const dateB = b.createdAt instanceof Date ? b.createdAt : new Date(b.createdAt);
+    return dateB.getTime() - dateA.getTime();
   });
 
   return (

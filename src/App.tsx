@@ -37,7 +37,12 @@ function App() {
 
   // Save todos to localStorage when they change
   useEffect(() => {
-    localStorage.setItem('todos', JSON.stringify(todos));
+    // Convert Date objects to strings before storing
+    const todosToStore = todos.map(todo => ({
+      ...todo,
+      createdAt: todo.createdAt instanceof Date ? todo.createdAt.toISOString() : todo.createdAt
+    }));
+    localStorage.setItem('todos', JSON.stringify(todosToStore));
   }, [todos]);
 
   // Add a new todo
