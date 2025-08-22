@@ -7,14 +7,16 @@ export interface Todo {
   completedAt?: Date;
 }
 
-export enum TodoCategory {
-  WORK = 'work',
-  PERSONAL = 'personal',
-  SHOPPING = 'shopping',
-  HEALTH = 'health',
-  EDUCATION = 'education',
-  OTHER = 'other'
-}
+export const TodoCategory = {
+  WORK: 'work',
+  PERSONAL: 'personal',
+  SHOPPING: 'shopping',
+  HEALTH: 'health',
+  EDUCATION: 'education',
+  OTHER: 'other'
+} as const;
+
+export type TodoCategory = typeof TodoCategory[keyof typeof TodoCategory];
 
 export interface GameState {
   level: number;

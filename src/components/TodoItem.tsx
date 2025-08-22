@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTodo } from '../context/TodoContext';
-import { Todo, TodoCategory } from '../types/todo';
+import type { Todo } from '../types/todo';
+import { TodoCategory } from '../types/todo';
 import { FaTrash, FaBriefcase, FaShoppingCart, FaHeartbeat, FaGraduationCap, FaUser, FaTasks, FaCheck } from 'react-icons/fa';
 import confettiGif from '../assets/images/confetti.gif';
 

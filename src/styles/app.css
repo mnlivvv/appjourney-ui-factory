@@ -1,3 +1,6 @@
+/* Load Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;500;600;700&display=swap');
+
 /* Main App Styles */
 :root {
   /* Color Palette */
@@ -49,9 +52,6 @@
   --radius-lg: 16px;
   --radius-full: 9999px;
 }
-
-/* Load Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;500;600;700&display=swap');
 
 /* Base Styles */
 * {

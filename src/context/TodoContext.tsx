@@ -1,6 +1,8 @@
-import { createContext, useState, useContext, ReactNode, useEffect } from 'react';
+import { createContext, useState, useContext, useEffect } from 'react';
+import type { ReactNode } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { Todo, TodoCategory, GameState } from '../types/todo';
+import type { Todo, GameState } from '../types/todo';
+import { TodoCategory } from '../types/todo';
 
 interface TodoContextType {
   todos: Todo[];
@@ -24,14 +26,6 @@ const COMPLETION_MESSAGES = [
   "Awesome work! Keep the momentum going! ⚡",
   "One more done! You're unstoppable! 💪",
   "Way to go! You're making excellent progress! 🌟"
-];
-
-const LEVEL_UP_MESSAGES = [
-  "Level up! You're becoming a task master! 🏆",
-  "New level unlocked! Your productivity is soaring! 🚀",
-  "You've reached a new level! Impressive work! 🎖️",
-  "Level up achieved! You're absolutely crushing it! 🌠",
-  "New productivity level unlocked! Amazing progress! 🏅"
 ];
 
 export const TodoProvider = ({ children }: TodoProviderProps) => {
