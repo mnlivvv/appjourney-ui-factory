@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { KeyboardEvent, ChangeEvent } from 'react';
+import type { KeyboardEvent as ReactKeyboardEvent, ChangeEvent as ReactChangeEvent } from 'react';
 
 interface ChatInputProps {
   onSendMessage: (message: string) => void;
@@ -9,7 +9,7 @@ interface ChatInputProps {
 const ChatInput = ({ onSendMessage, disabled = false }: ChatInputProps) => {
   const [message, setMessage] = useState('');
 
-  const handleInputChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+  const handleInputChange = (e: ReactChangeEvent<HTMLTextAreaElement>) => {
     setMessage(e.target.value);
   };
 
@@ -20,7 +20,7 @@ const ChatInput = ({ onSendMessage, disabled = false }: ChatInputProps) => {
     }
   };
 
-  const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+  const handleKeyDown = (e: ReactKeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       handleSendMessage();

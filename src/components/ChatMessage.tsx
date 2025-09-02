@@ -1,10 +1,10 @@
-import type { ReactNode } from 'react';
+import type { ReactNode as React_ReactNode } from 'react';
 
 export type MessageRole = 'user' | 'ai';
 
 interface ChatMessageProps {
   role: MessageRole;
-  content: string | ReactNode;
+  content: string | React_ReactNode;
   timestamp?: string;
 }
 

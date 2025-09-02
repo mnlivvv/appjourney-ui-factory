@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import ChatInterface from './components/ChatInterface'
-import ThemeToggle from './components/ThemeToggle'
+import ChatInterface from './components/chatinterface'
+import ThemeToggle from './components/themetoggle'
 import './App.css'
 
 function App() {

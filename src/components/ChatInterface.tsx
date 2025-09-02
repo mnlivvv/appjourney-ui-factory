@@ -1,11 +1,11 @@
 import { useState, useRef, useEffect } from 'react';
-import ChatMessage from './ChatMessage';
-import type { MessageRole } from './ChatMessage';
-import ChatInput from './ChatInput';
+import ChatMessage from './chatmessage';
+import type { MessageRole as ChatMessageRole } from './chatmessage';
+import ChatInput from './chatinput';
 
 interface Message {
   id: string;
-  role: MessageRole;
+  role: ChatMessageRole;
   content: string;
   timestamp: string;
 }
