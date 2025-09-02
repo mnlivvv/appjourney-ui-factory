@@ -3,19 +3,37 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  position: relative;
+}
+
+/* Circuit board background pattern */
+#root::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10 H 90 V 90 H 10 L 10 10' fill='none' stroke='rgba(0, 240, 255, 0.05)' stroke-width='1'/%3E%3Cpath d='M30 10 V 30 H 10' fill='none' stroke='rgba(0, 240, 255, 0.05)' stroke-width='1'/%3E%3Cpath d='M70 10 V 30 H 90' fill='none' stroke='rgba(0, 240, 255, 0.05)' stroke-width='1'/%3E%3Cpath d='M30 90 V 70 H 10' fill='none' stroke='rgba(0, 240, 255, 0.05)' stroke-width='1'/%3E%3Cpath d='M70 90 V 70 H 90' fill='none' stroke='rgba(0, 240, 255, 0.05)' stroke-width='1'/%3E%3Cpath d='M10 50 H 30' fill='none' stroke='rgba(0, 240, 255, 0.05)' stroke-width='1'/%3E%3Cpath d='M70 50 H 90' fill='none' stroke='rgba(0, 240, 255, 0.05)' stroke-width='1'/%3E%3Cpath d='M50 10 V 30' fill='none' stroke='rgba(0, 240, 255, 0.05)' stroke-width='1'/%3E%3Cpath d='M50 70 V 90' fill='none' stroke='rgba(0, 240, 255, 0.05)' stroke-width='1'/%3E%3Ccircle cx='10' cy='10' r='2' fill='rgba(0, 240, 255, 0.03)'/%3E%3Ccircle cx='10' cy='50' r='2' fill='rgba(0, 240, 255, 0.03)'/%3E%3Ccircle cx='10' cy='90' r='2' fill='rgba(0, 240, 255, 0.03)'/%3E%3Ccircle cx='50' cy='10' r='2' fill='rgba(0, 240, 255, 0.03)'/%3E%3Ccircle cx='50' cy='90' r='2' fill='rgba(0, 240, 255, 0.03)'/%3E%3Ccircle cx='90' cy='10' r='2' fill='rgba(0, 240, 255, 0.03)'/%3E%3Ccircle cx='90' cy='50' r='2' fill='rgba(0, 240, 255, 0.03)'/%3E%3Ccircle cx='90' cy='90' r='2' fill='rgba(0, 240, 255, 0.03)'/%3E%3C/svg%3E");
+  opacity: 0.1;
+  z-index: -1;
+  pointer-events: none;
 }
 
 .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
-  transition: filter 300ms;
+  transition: filter 300ms, transform 300ms;
 }
+
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em var(--color-neon-cyan));
+  transform: scale(1.05);
 }
+
 .logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  filter: drop-shadow(0 0 2em var(--color-neon-cyan));
 }
 
 @keyframes logo-spin {
@@ -35,8 +53,526 @@
 
 .card {
   padding: 2em;
+  margin: 2em 0;
+  border-radius: var(--border-radius-lg);
+  background-color: var(--color-bg-secondary);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 240, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 240, 255, 0.2);
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-neon-cyan), var(--color-neon-magenta));
 }
 
 .read-the-docs {
-  color: #888;
+  color: var(--color-text-secondary);
+  position: relative;
+  padding: 1rem;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
+
+.read-the-docs::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-neon-cyan), transparent);
+}
+
+/* Container layouts */
+.ai-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* AI Specific Components */
+.ai-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.ai-title {
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  background: linear-gradient(90deg, var(--color-neon-cyan), var(--color-electric-blue), var(--color-neon-magenta));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  animation: pulse 3s infinite;
+  letter-spacing: 2px;
+}
+
+.ai-subtitle {
+  font-size: 1.2rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 2rem;
+  text-align: center;
+  max-width: 600px;
+}
+
+.ai-card {
+  background: rgba(17, 24, 39, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 240, 255, 0.1);
+  border-radius: var(--border-radius-lg);
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 240, 255, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.ai-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 240, 255, 0.2);
+}
+
+.ai-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-neon-cyan), var(--color-neon-magenta));
+}
+
+.ai-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+}
+
+.ai-card-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.25rem;
+  color: var(--color-neon-cyan);
+  margin: 0;
+}
+
+.ai-card-icon {
+  font-size: 1.5rem;
+  color: var(--color-neon-cyan);
+}
+
+.ai-data-display {
+  background-color: var(--color-bg-tertiary);
+  border-radius: var(--border-radius-md);
+  padding: 1rem;
+  border: 1px solid rgba(0, 240, 255, 0.1);
+  font-family: 'Roboto Mono', monospace;
+  position: relative;
+  overflow: hidden;
+}
+
+.ai-data-display::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(0, 240, 255, 0.05), transparent);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.ai-button {
+  background: linear-gradient(90deg, var(--color-bg-tertiary), rgba(0, 240, 255, 0.1));
+  border: 1px solid var(--color-neon-cyan);
+  border-radius: var(--border-radius-md);
+  color: var(--color-text-primary);
+  font-family: 'Orbitron', sans-serif;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+}
+
+.ai-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.2), transparent);
+  transition: left 0.6s;
+}
+
+.ai-button:hover {
+  background: linear-gradient(90deg, rgba(0, 240, 255, 0.1), var(--color-bg-tertiary));
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+}
+
+.ai-button:hover::before {
+  left: 100%;
+}
+
+.ai-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.ai-progress {
+  width: 100%;
+  height: 8px;
+  background-color: var(--color-bg-tertiary);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.ai-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-neon-cyan), var(--color-electric-blue));
+  border-radius: 4px;
+  transition: width 0.5s ease;
+  position: relative;
+}
+
+.ai-progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  animation: progressGlow 2s infinite;
+}
+
+@keyframes progressGlow {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Animation for data processing visualization */
+.data-processing {
+  display: flex;
+  gap: 4px;
+  margin: 1rem 0;
+}
+
+.data-bit {
+  width: 8px;
+  height: 16px;
+  background-color: var(--color-neon-cyan);
+  border-radius: 2px;
+  opacity: 0.2;
+}
+
+.data-bit:nth-child(1) { animation: dataFlow 2s infinite 0.1s; }
+.data-bit:nth-child(2) { animation: dataFlow 2s infinite 0.2s; }
+.data-bit:nth-child(3) { animation: dataFlow 2s infinite 0.3s; }
+.data-bit:nth-child(4) { animation: dataFlow 2s infinite 0.4s; }
+.data-bit:nth-child(5) { animation: dataFlow 2s infinite 0.5s; }
+
+@keyframes dataFlow {
+  0% { opacity: 0.2; height: 16px; }
+  50% { opacity: 1; height: 24px; }
+  100% { opacity: 0.2; height: 16px; }
+}
+
+/* Data Visualization Styles */
+.ai-data-visualization-container {
+  width: 100%;
+  position: relative;
+}
+
+.ai-data-visualization {
+  width: 100%;
+  height: 300px;
+  background-color: var(--color-bg-tertiary);
+  border-radius: var(--border-radius-md);
+  margin-top: 1rem;
+  overflow: hidden;
+  border: 1px solid rgba(0, 240, 255, 0.1);
+  position: relative;
+}
+
+.ai-visualization-labels {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.ai-viz-label {
+  display: flex;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+}
+
+.ai-viz-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+/* Brain Animation Styles */
+.ai-brain-animation {
+  width: 100%;
+}
+
+.ai-brain-canvas-container {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  background-color: var(--color-bg-tertiary);
+  border: 1px solid rgba(0, 240, 255, 0.1);
+}
+
+.ai-brain-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ai-brain-overlay {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 1rem;
+  z-index: 2;
+}
+
+.ai-brain-stats {
+  display: flex;
+  gap: 1.5rem;
+  background-color: rgba(10, 15, 28, 0.7);
+  backdrop-filter: blur(10px);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius-md);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+}
+
+.ai-brain-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ai-brain-stat-label {
+  font-size: 0.7rem;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.ai-brain-stat-value {
+  font-size: 1.1rem;
+  font-family: 'Orbitron', sans-serif;
+  color: var(--color-neon-cyan);
+  margin-top: 0.25rem;
+}
+
+/* AI Terminal Styles */
+.ai-terminal {
+  width: 100%;
+  height: 400px;
+  background-color: var(--color-bg-tertiary);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(0, 240, 255, 0.1);
+  font-family: 'Roboto Mono', monospace;
+}
+
+.ai-terminal-header {
+  background-color: var(--color-bg-secondary);
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+}
+
+.ai-terminal-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.ai-terminal-btn {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--color-neon-cyan);
+  opacity: 0.5;
+}
+
+.ai-terminal-btn:nth-child(2) {
+  background-color: var(--color-neon-magenta);
+}
+
+.ai-terminal-btn:nth-child(3) {
+  background-color: var(--color-electric-blue);
+}
+
+.ai-terminal-title {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.ai-terminal-content {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  background-color: rgba(10, 15, 28, 0.9);
+  position: relative;
+}
+
+.ai-terminal-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 240, 255, 0.02) 2px,
+    rgba(0, 240, 255, 0.02) 4px
+  );
+  pointer-events: none;
+}
+
+.ai-terminal-line {
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  font-size: 0.9rem;
+}
+
+.ai-terminal-command {
+  color: var(--color-neon-cyan);
+}
+
+.ai-terminal-response {
+  color: var(--color-text-primary);
+  white-space: pre-line;
+}
+
+.ai-terminal-input-line {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.ai-terminal-prompt {
+  color: var(--color-neon-cyan);
+  margin-right: 0.5rem;
+}
+
+.ai-terminal-input {
+  background: transparent;
+  border: none;
+  color: var(--color-text-primary);
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.9rem;
+  flex: 1;
+  outline: none;
+  caret-color: var(--color-neon-cyan);
+}
+
+/* Adjust for smaller screens */
+@media (max-width: 768px) {
+  #root {
+    padding: 1rem;
+  }
+  
+  .ai-title {
+    font-size: 2.5rem;
+  }
+  
+  .ai-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .ai-button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Button Group for Navigation */
+.ai-button-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+.ai-button-group .ai-button {
+  flex: 1;
+  min-width: max-content;
+}
+
+.ai-button-group .ai-button.active {
+  background: linear-gradient(90deg, rgba(0, 240, 255, 0.2), var(--color-bg-tertiary));
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
+}
+
+/* Metric Cards */
+.ai-metric-card {
+  padding: 1rem;
+  background-color: var(--color-bg-tertiary);
+  border-radius: var(--border-radius-md);
+  border: 1px solid rgba(0, 240, 255, 0.1);
+  text-align: center;
+}
+
+/* Log Entry Styles */
+.ai-log-entry {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.9rem;
 }
