@@ -51,8 +51,8 @@ const BrainAnimation: FC = () => {
         this.y += this.vy
         
         // Bounce off edges
-        if (this.x < 0 || this.x > canvas.width) this.vx *= -1
-        if (this.y < 0 || this.y > canvas.height) this.vy *= -1
+        if (this.x < 0 || this.x > (canvas?.width || 0)) this.vx *= -1
+        if (this.y < 0 || this.y > (canvas?.height || 0)) this.vy *= -1
       }
       
       draw() {
@@ -123,18 +123,18 @@ const BrainAnimation: FC = () => {
       ctx.strokeStyle = 'rgba(0, 240, 255, 0.1)'
       
       // Horizontal grid lines
-      for (let i = 0; i < canvas.height; i += 20) {
+      for (let i = 0; i < (canvas?.height || 0); i += 20) {
         ctx.beginPath()
         ctx.moveTo(0, i)
-        ctx.lineTo(canvas.width, i)
+        ctx.lineTo(canvas?.width || 0, i)
         ctx.stroke()
       }
       
       // Vertical grid lines
-      for (let i = 0; i < canvas.width; i += 20) {
+      for (let i = 0; i < (canvas?.width || 0); i += 20) {
         ctx.beginPath()
         ctx.moveTo(i, 0)
-        ctx.lineTo(i, canvas.height)
+        ctx.lineTo(i, canvas?.height || 0)
         ctx.stroke()
       }
       
