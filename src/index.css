@@ -1,11 +1,29 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Nunito', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
+  /* Nature-inspired color palette */
+  --color-leaf: #7ca982; /* Muted green */
+  --color-moss: #5f7a61; /* Darker green */
+  --color-bark: #a67f5d; /* Warm brown */
+  --color-earth: #8e7760; /* Darker brown */
+  --color-sky: #a3c6d9; /* Gentle blue */
+  --color-water: #6a92ab; /* Deeper blue */
+  --color-stone: #d6d1cd; /* Light stone */
+  --color-sand: #e8e1d9; /* Warm beige */
+  
+  /* Light mode (day) */
+  --bg-primary: var(--color-sand);
+  --bg-secondary: var(--color-stone);
+  --text-primary: #3c4c36; /* Dark moss green */
+  --text-secondary: #5a5146; /* Dark earth */
+  --accent-primary: var(--color-leaf);
+  --accent-secondary: var(--color-sky);
+
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,11 +33,12 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--color-moss);
   text-decoration: inherit;
+  transition: color 0.3s ease;
 }
 a:hover {
-  color: #535bf2;
+  color: var(--color-leaf);
 }
 
 body {
@@ -28,6 +47,8 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-image: linear-gradient(to bottom right, var(--bg-primary), var(--bg-secondary));
+  transition: all 0.5s ease;
 }
 
 h1 {
@@ -36,33 +57,63 @@ h1 {
 }
 
 button {
-  border-radius: 8px;
+  border-radius: 24px; /* Rounded corners for organic feel */
   border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+  padding: 0.7em 1.5em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--accent-primary);
+  color: white;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 button:hover {
-  border-color: #646cff;
+  border-color: var(--color-moss);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 3px solid var(--color-leaf);
+  outline-offset: 2px;
 }
 
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    /* Dark mode (night) */
+    --bg-primary: #2c3e2e; /* Dark forest green */
+    --bg-secondary: #1f2d30; /* Dark blue-green */
+    --text-primary: #e0e6e1; /* Light green-white */
+    --text-secondary: #b0c4c9; /* Light blue-gray */
+    --accent-primary: #5d8b6c; /* Mid green */
+    --accent-secondary: #4a7c98; /* Mid blue */
   }
+
   a:hover {
-    color: #747bff;
+    color: var(--color-sky);
   }
+  
   button {
-    background-color: #f9f9f9;
+    background-color: var(--accent-primary);
   }
+}
+
+/* Add smooth scrolling to the whole page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Define common organic shape utilities */
+.shape-organic {
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
+
+.shape-leaf {
+  border-radius: 0% 50% 0% 50% / 50% 50% 50% 50%;
+}
+
+.shape-pond {
+  border-radius: 60% 40% 60% 40% / 40% 60% 40% 60%;
 }
