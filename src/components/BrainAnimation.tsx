@@ -1,10 +1,10 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, FC } from 'react'
 
 /**
  * BrainAnimation Component
  * Renders a neural network animation simulating an AI brain
  */
-const BrainAnimation = () => {
+const BrainAnimation: FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   
   useEffect(() => {

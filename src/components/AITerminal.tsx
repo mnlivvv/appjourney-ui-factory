@@ -1,10 +1,10 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, FC, KeyboardEvent, ChangeEvent } from 'react'
 
 /**
  * AITerminal Component
  * Simulates a futuristic AI command terminal with typing effect
  */
-const AITerminal = () => {
+const AITerminal: FC = () => {
   const [displayedText, setDisplayedText] = useState('')
   const [commandHistory, setCommandHistory] = useState<string[]>([])
   const [currentInput, setCurrentInput] = useState('')
@@ -113,7 +113,7 @@ const AITerminal = () => {
   }
   
   // Handle command input
-  const handleKeyDown = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: KeyboardEvent) => {
     if (e.key === 'Enter' && !isProcessing) {
       if (currentInput.trim()) {
         processCommand(currentInput)
@@ -180,7 +180,7 @@ const AITerminal = () => {
               type="text"
               className="ai-terminal-input"
               value={currentInput}
-              onChange={(e) => setCurrentInput(e.target.value)}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => setCurrentInput(e.target.value)}
               onKeyDown={handleKeyDown}
               autoFocus
               spellCheck="false"

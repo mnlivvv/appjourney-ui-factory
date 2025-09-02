@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, FC } from 'react'
 
 /**
  * DataVisualization Component
  * Displays a futuristic data visualization grid with animated data points
  */
-const DataVisualization = () => {
+const DataVisualization: FC = () => {
   const [dataPoints, setDataPoints] = useState<Array<DataPoint>>([])
   
   // Define types

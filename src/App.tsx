@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, FC } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -9,7 +9,7 @@ import AITerminal from './components/AITerminal'
 import BrainAnimation from './components/BrainAnimation'
 
 // AI Dashboard Component
-const AIDashboard = () => {
+const AIDashboard: FC = () => {
   const [analysisProgress, setAnalysisProgress] = useState(0)
   const [aiResponse, setAiResponse] = useState('')
   const [isProcessing, setIsProcessing] = useState(false)
@@ -75,18 +75,21 @@ const AIDashboard = () => {
           <div className="ai-button-group">
             <button 
               className={`ai-button ${activeTab === 'dashboard' ? 'active' : ''}`}
+              type="button"
               onClick={() => setActiveTab('dashboard')}
             >
               Dashboard
             </button>
             <button 
               className={`ai-button ${activeTab === 'analytics' ? 'active' : ''}`}
+              type="button"
               onClick={() => setActiveTab('analytics')}
             >
               Neural Analytics
             </button>
             <button 
               className={`ai-button ${activeTab === 'settings' ? 'active' : ''}`}
+              type="button"
               onClick={() => setActiveTab('settings')}
             >
               System Config
@@ -143,7 +146,7 @@ const AIDashboard = () => {
                 )}
               </div>
               <div style={{marginTop: '1rem'}}>
-                <button className="ai-button" onClick={startAIProcessing} disabled={isProcessing}>
+                <button className="ai-button" onClick={startAIProcessing} disabled={isProcessing} type="button">
                   {isProcessing ? 'PROCESSING...' : 'START ANALYSIS'}
                 </button>
               </div>
@@ -241,7 +244,13 @@ const AIDashboard = () => {
 }
 
 // Metric Card Component
-const MetricCard = ({ title, value, color }) => {
+interface MetricCardProps {
+  title: string;
+  value: string;
+  color: string;
+}
+
+const MetricCard: FC<MetricCardProps> = ({ title, value, color }) => {
   return (
     <div className="ai-metric-card">
       <h4 style={{ color: color }}>{title}</h4>
@@ -258,7 +267,12 @@ const MetricCard = ({ title, value, color }) => {
 }
 
 // Log Entry Component
-const LogEntry = ({ timestamp, message }) => {
+interface LogEntryProps {
+  timestamp: string;
+  message: string;
+}
+
+const LogEntry: FC<LogEntryProps> = ({ timestamp, message }) => {
   return (
     <div className="ai-log-entry" style={{borderBottom: '1px solid rgba(0, 240, 255, 0.1)', padding: '0.5rem 0'}}>
       <span style={{color: 'var(--color-neon-cyan)', marginRight: '1rem'}}>[{timestamp}]</span>
@@ -267,7 +281,7 @@ const LogEntry = ({ timestamp, message }) => {
   )
 }
 
-function App() {
+const App: FC = () => {
   return <AIDashboard />
 }
 
