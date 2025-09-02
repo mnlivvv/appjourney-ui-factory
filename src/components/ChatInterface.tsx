@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
-import ChatMessage, { MessageRole } from './ChatMessage';
+import ChatMessage from './ChatMessage';
+import type { MessageRole } from './ChatMessage';
 import ChatInput from './ChatInput';
 
 interface Message {
