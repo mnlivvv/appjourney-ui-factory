@@ -1,0 +1,102 @@
+.todo-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.todo-list-header {
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.todo-stats {
+  display: flex;
+  justify-content: space-between;
+  color: var(--color-gray-500);
+  font-size: 0.875rem;
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--color-gray-200);
+}
+
+.todo-filters {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.filter-group label {
+  color: var(--color-gray-500);
+  font-size: 0.875rem;
+  min-width: 60px;
+}
+
+.button-group {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.filter-btn {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: 0.75rem;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-gray-100);
+  border: 1px solid var(--color-gray-200);
+  color: var(--color-gray-500);
+  transition: all var(--transition-fast);
+}
+
+.filter-btn.active {
+  background-color: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+.filter-btn:hover:not(.active) {
+  background-color: var(--color-gray-200);
+  border-color: var(--color-gray-300);
+}
+
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.empty-state {
+  padding: var(--spacing-xl);
+  text-align: center;
+  color: var(--color-gray-400);
+  background-color: var(--color-gray-100);
+  border-radius: var(--radius-md);
+  font-style: italic;
+}
+
+@media (min-width: 640px) {
+  .todo-filters {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 480px) {
+  .todo-stats {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    align-items: flex-start;
+  }
+  
+  .filter-group {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+  }
+}

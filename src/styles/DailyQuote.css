@@ -1,0 +1,52 @@
+.daily-quote {
+  text-align: center;
+  padding: var(--spacing-md);
+  background-color: var(--color-gray-100);
+  border-radius: var(--radius-md);
+  position: relative;
+  margin-bottom: var(--spacing-md);
+}
+
+.daily-quote h3 {
+  color: var(--color-primary);
+  font-size: 1.1rem;
+  margin-bottom: var(--spacing-sm);
+  font-weight: 500;
+}
+
+.daily-quote blockquote {
+  font-style: italic;
+  color: var(--color-text);
+  font-size: 1rem;
+  line-height: 1.6;
+  position: relative;
+  padding: 0 var(--spacing-lg);
+}
+
+.daily-quote blockquote::before,
+.daily-quote blockquote::after {
+  content: """;
+  position: absolute;
+  font-size: 2rem;
+  color: var(--color-secondary);
+  opacity: 0.4;
+  line-height: 1;
+}
+
+.daily-quote blockquote::before {
+  top: 0;
+  left: 0;
+}
+
+.daily-quote blockquote::after {
+  content: """;
+  bottom: -0.5rem;
+  right: 0;
+}
+
+@media (max-width: 480px) {
+  .daily-quote blockquote {
+    padding: 0 var(--spacing-sm);
+    font-size: 0.9rem;
+  }
+}

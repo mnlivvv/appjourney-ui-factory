@@ -1,0 +1,243 @@
+.todo-item {
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-left: 4px solid transparent;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+}
+
+.todo-item:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.todo-item.priority-low {
+  border-left-color: var(--color-low);
+}
+
+.todo-item.priority-medium {
+  border-left-color: var(--color-medium);
+}
+
+.todo-item.priority-high {
+  border-left-color: var(--color-high);
+}
+
+.todo-item.completed {
+  opacity: 0.7;
+  background-color: var(--color-gray-100);
+}
+
+.todo-content {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex: 1;
+}
+
+/* Custom checkbox styling */
+.todo-checkbox-container {
+  display: flex;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  width: 22px;
+  height: 22px;
+}
+
+.todo-checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.todo-checkbox:checked ~ .checkmark {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.todo-checkbox:checked ~ .checkmark:after {
+  display: block;
+}
+
+.todo-checkbox-container .checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.todo-text {
+  font-size: 1rem;
+  color: var(--color-text);
+  cursor: text;
+  transition: all var(--transition-fast);
+}
+
+.todo-text.completed-text {
+  text-decoration: line-through;
+  color: var(--color-gray-400);
+}
+
+.todo-edit-input {
+  flex: 1;
+  background: transparent;
+  border: 1px solid var(--color-gray-300);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  font-size: 1rem;
+}
+
+.todo-edit-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(158, 158, 203, 0.2);
+}
+
+/* Todo actions */
+.todo-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.priority-container {
+  position: relative;
+  margin-right: var(--spacing-sm);
+}
+
+.priority-indicator {
+  width: 25px;
+  height: 25px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-white);
+  transition: all var(--transition-fast);
+}
+
+.priority-indicator.priority-low {
+  background-color: var(--color-low);
+  color: var(--color-text);
+}
+
+.priority-indicator.priority-medium {
+  background-color: var(--color-medium);
+  color: white;
+}
+
+.priority-indicator.priority-high {
+  background-color: var(--color-high);
+  color: white;
+}
+
+.priority-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: var(--color-white);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 80px;
+  margin-top: var(--spacing-xs);
+}
+
+.priority-option {
+  padding: var(--spacing-sm);
+  text-align: center;
+  font-size: 0.75rem;
+  transition: all var(--transition-fast);
+  border: none;
+}
+
+.priority-option.low {
+  background-color: var(--color-low);
+  color: var(--color-text);
+}
+
+.priority-option.medium {
+  background-color: var(--color-medium);
+  color: white;
+}
+
+.priority-option.high {
+  background-color: var(--color-high);
+  color: white;
+}
+
+.priority-option:hover {
+  filter: brightness(0.95);
+}
+
+.todo-btn {
+  background: none;
+  border: none;
+  color: var(--color-gray-500);
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+  padding: var(--spacing-xs) var(--spacing-sm);
+}
+
+.todo-btn:hover {
+  color: var(--color-text);
+}
+
+.edit-btn:hover {
+  color: var(--color-primary);
+}
+
+.delete-btn:hover {
+  color: #e57373; /* Soft red */
+}
+
+@media (max-width: 640px) {
+  .todo-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+  }
+  
+  .todo-actions {
+    width: 100%;
+    justify-content: flex-end;
+    margin-top: var(--spacing-sm);
+    border-top: 1px solid var(--color-gray-200);
+    padding-top: var(--spacing-sm);
+  }
+}
