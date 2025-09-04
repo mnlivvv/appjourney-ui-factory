@@ -1,42 +1,310 @@
-#root {
-  max-width: 1280px;
+.app-container {
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.app-title {
+  font-weight: 300;
+  font-size: 2rem;
+  color: var(--color-text);
+  letter-spacing: -0.5px;
+}
+
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+/* Todo Form Styles */
+.todo-form {
+  display: flex;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.todo-input {
+  flex: 1;
+}
+
+.todo-submit {
+  background-color: var(--color-accent);
+  color: white;
+  border: none;
+}
+
+.todo-submit:hover {
+  opacity: 0.9;
+  background-color: var(--color-accent);
+}
+
+/* Todo List Styles */
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Todo Item Styles */
+.todo-item {
+  display: flex;
+  align-items: center;
+  padding: var(--space-lg);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  transition: var(--transition-default);
+  gap: var(--space-md);
+}
+
+.todo-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.todo-checkbox {
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  position: relative;
+  transition: var(--transition-quick);
+  background-color: transparent;
+  flex-shrink: 0;
+}
+
+.todo-checkbox:checked {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.todo-checkbox:checked::after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 8px;
+  transform: rotate(45deg) translate(-50%, -50%);
+  width: 5px;
+  height: 10px;
+  border-bottom: 2px solid white;
+  border-right: 2px solid white;
+}
+
+.todo-text {
+  flex: 1;
+  margin: 0;
+  transition: var(--transition-quick);
+}
+
+.todo-completed .todo-text {
+  text-decoration: line-through;
+  color: var(--color-text-secondary);
+  opacity: 0.7;
+}
+
+.todo-actions {
+  display: flex;
+  gap: var(--space-xs);
+}
+
+.todo-btn {
+  background: transparent;
+  border: none;
+  color: var(--color-text-secondary);
+  padding: var(--space-xs);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: var(--transition-quick);
+}
+
+.todo-btn:hover {
+  color: var(--color-accent);
+  background-color: rgba(134, 178, 161, 0.1);
+}
+
+/* Filters and Controls */
+.todo-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-lg);
+  padding: var(--space-md);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.filter-options,
+.view-options {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.filter-btn,
+.view-btn {
+  background: transparent;
+  border: none;
+  padding: var(--space-xs) var(--space-sm);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-secondary);
+  transition: var(--transition-quick);
+}
+
+.filter-btn.active,
+.view-btn.active {
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+.filter-btn:hover,
+.view-btn:hover {
+  background-color: rgba(134, 178, 161, 0.1);
+}
+
+/* Timeline View */
+.timeline-view {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.timeline-day {
+  margin-bottom: var(--space-lg);
+}
+
+.timeline-date {
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: var(--color-text);
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-xs);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Pomodoro Timer */
+.pomodoro-container {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  margin-top: var(--space-xl);
+  border: 1px solid var(--color-border);
+}
+
+.timer-display {
+  font-size: 3rem;
+  font-weight: 200;
   text-align: center;
+  margin: var(--space-md) 0;
+  letter-spacing: -1px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.timer-controls {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
 }
 
-@keyframes logo-spin {
+.timer-btn {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition-quick);
+}
+
+.timer-btn.start {
+  background-color: var(--color-accent);
+  color: white;
+  border-color: var(--color-accent);
+}
+
+.timer-btn:hover {
+  opacity: 0.9;
+}
+
+.timer-mode-selector {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--space-lg);
+  gap: var(--space-xs);
+}
+
+.timer-mode {
+  padding: var(--space-xs) var(--space-md);
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition-quick);
+}
+
+.timer-mode.active {
+  background-color: var(--color-accent);
+  color: white;
+  border-color: var(--color-accent);
+}
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: var(--space-xxl) 0;
+  color: var(--color-text-secondary);
+}
+
+.empty-state h3 {
+  font-weight: 300;
+  margin-bottom: var(--space-md);
+}
+
+/* Transitions and Animations */
+@keyframes fadeIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(10px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+.fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .app-container {
+    padding: var(--space-lg) var(--space-md);
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+  
+  .todo-form {
+    flex-direction: column;
+  }
+  
+  .todo-controls {
+    flex-direction: column;
+    gap: var(--space-md);
+  }
 }
