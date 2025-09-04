@@ -1,25 +1,37 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  /* Monochromatic color scheme - soft blue */
+  --primary: #5a9bc7;
+  --primary-light: #a9c6d9;
+  --primary-lighter: #d8e6f0;
+  --primary-lightest: #f0f7fc;
+  --background: #f7fafe;
+  --text: #4a5568;
+  --text-light: #718096;
+  
+  /* Typography */
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  
+  /* Spacing & layout */
+  --space-xs: 0.25rem;
+  --space-s: 0.5rem;
+  --space-m: 1rem;
+  --space-l: 1.5rem;
+  --space-xl: 2rem;
+  
+  /* Base properties */
+  color: var(--text);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -28,41 +40,84 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background: linear-gradient(135deg, #e8f1f8 0%, #f7fafe 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add a subtle water drop decoration to the background */
+body::before, body::after {
+  content: "";
+  position: fixed;
+  background-color: var(--primary-lighter);
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0.4;
+}
+
+body::before {
+  width: 300px;
+  height: 300px;
+  bottom: -150px;
+  left: -150px;
+}
+
+body::after {
+  width: 200px;
+  height: 200px;
+  top: -100px;
+  right: -100px;
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-weight: 400;
+  color: var(--primary);
+  margin-bottom: var(--space-l);
+  letter-spacing: 0.5px;
 }
 
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 1px solid var(--primary-lighter);
   padding: 0.6em 1.2em;
-  font-size: 1em;
+  font-size: 0.9em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: white;
+  color: var(--primary);
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  transition: all 0.25s ease;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+button:hover {
+  background-color: var(--primary-lightest);
+  border-color: var(--primary-light);
+}
+
+button:focus,
+button:focus-visible {
+  outline: 3px solid rgba(90, 155, 199, 0.2);
+}
+
+/* Smooth transitions for all interactions */
+a, input, button, .todo-item, .checkmark {
+  transition: all 0.2s ease;
+}
+
+/* Custom scrollbar for additional polish */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--primary-lightest);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary-light);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--primary);
 }

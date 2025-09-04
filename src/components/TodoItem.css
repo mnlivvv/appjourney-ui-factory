@@ -1,0 +1,112 @@
+/* TodoItem.css */
+.todo-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  border-radius: 8px;
+  background-color: #f7fafe;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.todo-item:hover {
+  box-shadow: 0 2px 8px rgba(157, 192, 219, 0.15);
+}
+
+.todo-item.completed {
+  background-color: #f0f7fc;
+}
+
+.todo-item.completed .todo-text {
+  text-decoration: line-through;
+  color: #a9c6d9;
+}
+
+.todo-text {
+  flex-grow: 1;
+  margin-left: 0.75rem;
+  color: #5a9bc7;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.delete-btn {
+  opacity: 0;
+  background: none;
+  border: none;
+  color: #a9c6d9;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.delete-btn:hover {
+  color: #5a9bc7;
+  background-color: #e8f1f8;
+}
+
+.delete-btn.visible {
+  opacity: 1;
+}
+
+/* Custom checkbox styling */
+.checkbox-container {
+  display: block;
+  position: relative;
+  padding-left: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  user-select: none;
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  background-color: #fff;
+  border: 1px solid #d8e6f0;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.checkbox-container:hover input ~ .checkmark {
+  border-color: #5a9bc7;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+  background-color: #5a9bc7;
+  border-color: #5a9bc7;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkbox-container .checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}

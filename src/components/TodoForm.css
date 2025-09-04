@@ -1,0 +1,67 @@
+/* TodoForm.css */
+.todo-form {
+  display: flex;
+  margin: 1.5rem 0;
+  transition: all 0.3s ease;
+}
+
+.todo-form.focused {
+  transform: scale(1.02);
+}
+
+.todo-input {
+  flex-grow: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d8e6f0;
+  border-radius: 8px 0 0 8px;
+  font-size: 1rem;
+  color: #5a9bc7;
+  background-color: #f7fafe;
+  transition: all 0.3s ease;
+}
+
+.todo-input::placeholder {
+  color: #a9c6d9;
+}
+
+.todo-input:focus {
+  outline: none;
+  border-color: #5a9bc7;
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(90, 155, 199, 0.1);
+}
+
+.add-btn {
+  background-color: #5a9bc7;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0 8px 8px 0;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-btn:hover {
+  background-color: #4a8ab7;
+}
+
+.add-btn:disabled {
+  background-color: #a9c6d9;
+  cursor: not-allowed;
+}
+
+.todo-form::before {
+  content: "💧";
+  position: absolute;
+  opacity: 0;
+  top: -20px;
+  left: 10px;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.todo-form.focused::before {
+  opacity: 0.2;
+  transform: translateY(0);
+}

@@ -1,0 +1,49 @@
+/* TodoList.css */
+.todo-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(157, 192, 219, 0.1);
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  gap: 0.5rem;
+}
+
+.todo-title {
+  color: #5a9bc7;
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.todo-list {
+  margin-top: 1.5rem;
+}
+
+.empty-state {
+  color: #a9c6d9;
+  text-align: center;
+  padding: 2rem;
+  font-style: italic;
+  border: 1px dashed #d8e6f0;
+  border-radius: 8px;
+}
+
+/* Subtle leaf decoration */
+.todo-container::before {
+  content: "☘️";
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 1.5rem;
+  opacity: 0.2;
+  transform: rotate(15deg);
+}
