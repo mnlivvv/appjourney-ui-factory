@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import { Todo } from './types'
+import type { Todo } from './types'
 import Header from './components/Header'
 import TodoList from './components/TodoList'
 import AddTodo from './components/AddTodo'
