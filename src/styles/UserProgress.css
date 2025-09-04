@@ -1,0 +1,117 @@
+/* UserProgress styles */
+.user-progress-container {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 16px;
+  padding: 1.2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.character-container {
+  margin-right: 1.5rem;
+  position: relative;
+}
+
+.character-image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+.level-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.level-badge {
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  color: white;
+  padding: 0.5rem 1.2rem;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  display: inline-block;
+  box-shadow: 0 3px 10px rgba(255, 154, 158, 0.3);
+  align-self: flex-start;
+}
+
+.points-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.total-points {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #444;
+}
+
+.next-level {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.progress-bar-container {
+  height: 12px;
+  background-color: #f0f0ff;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 0.3rem;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(to right, #7873f5, #ec53b0);
+  border-radius: 10px;
+}
+
+/* Change level badge color based on level */
+.level-badge {
+  /* Level 1-3 */
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+}
+
+/* You can add different gradient colors for different levels */
+.level-container:has(.level-badge:contains("Level 4")), 
+.level-container:has(.level-badge:contains("Level 5")),
+.level-container:has(.level-badge:contains("Level 6")) {
+  /* Level 4-6 */
+  background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+}
+
+.level-container:has(.level-badge:contains("Level 7")),
+.level-container:has(.level-badge:contains("Level 8")),
+.level-container:has(.level-badge:contains("Level 9")) {
+  /* Level 7-9 */
+  background: linear-gradient(135deg, #84fab0, #8fd3f4);
+}
+
+.level-container:has(.level-badge:contains("Level 10")) {
+  /* Level 10+ */
+  background: linear-gradient(135deg, #fad961, #f76b1c);
+}
+
+@media (max-width: 768px) {
+  .user-progress-container {
+    flex-direction: column;
+    padding: 1rem;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .character-container {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+  
+  .level-badge {
+    align-self: center;
+  }
+}

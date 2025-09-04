@@ -1,0 +1,43 @@
+/* ConfettiEffect styles */
+.level-up-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  z-index: 1000;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border: 3px solid gold;
+}
+
+.level-up-message h2 {
+  font-size: 2.5rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #ff9a9e;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.level-up-message p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .level-up-message {
+    width: 80%;
+    padding: 1.5rem;
+  }
+  
+  .level-up-message h2 {
+    font-size: 1.8rem;
+  }
+  
+  .level-up-message p {
+    font-size: 1rem;
+  }
+}
