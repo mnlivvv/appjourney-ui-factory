@@ -1,68 +1,259 @@
+/* Brutalist Todo App Styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@800&family=Space+Mono&display=swap');
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
+  /* Brutalist Color Scheme */
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-accent: #FF0000; /* Bright red accent color */
+  --font-heading: 'Inter', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+  
+  /* Fixed colors - no dark/light mode in brutalist design */
+  color-scheme: light;
+  color: var(--color-black);
+  background-color: var(--color-white);
+  
+  /* Typography */
+  font-family: var(--font-heading);
+  font-weight: 800;
+  line-height: 1.3;
+  -webkit-font-smoothing: none;
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+  padding: 0;
   min-height: 100vh;
+  width: 100%;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: -0.05em;
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-size: 4rem;
+  margin-bottom: 2rem;
+  line-height: 0.9;
 }
 
+h2 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Links */
+a {
+  font-weight: 800;
+  color: var(--color-black);
+  text-decoration: none;
+  border-bottom: 3px solid var(--color-accent);
+}
+
+a:hover {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+}
+
+/* Buttons */
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  border: 3px solid var(--color-black);
+  padding: 0.8em 1.5em;
+  font-size: 1.2rem;
+  font-weight: 800;
+  font-family: var(--font-heading);
+  background-color: var(--color-white);
+  color: var(--color-black);
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  text-transform: uppercase;
+  transition: none;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+button:hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+button.accent {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-white);
+}
+
+button.accent:hover {
+  background-color: var(--color-white);
+  color: var(--color-accent);
+}
+
+/* Form Elements */
+input, textarea {
+  border: 3px solid var(--color-black);
+  padding: 0.8em;
+  font-size: 1rem;
+  font-family: var(--font-mono);
+  background-color: var(--color-white);
+  width: 100%;
+  margin-bottom: 1rem;
+  outline: none;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--color-accent);
+}
+
+/* Layout */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
   }
-  a:hover {
-    color: #747bff;
+
+  h1 {
+    font-size: 2.5rem;
   }
-  button {
-    background-color: #f9f9f9;
+
+  h2 {
+    font-size: 1.8rem;
   }
+}
+
+/* Brutalist specific styles */
+.brutalist-box {
+  border: 3px solid var(--color-black);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.brutalist-header {
+  border-bottom: 5px solid var(--color-black);
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  width: 100%;
+}
+
+/* Todo specific styles */
+.todo-item {
+  font-family: var(--font-mono);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 3px solid var(--color-black);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.todo-item.completed {
+  border-color: var(--color-accent);
+  text-decoration: line-through;
+}
+
+.todo-item input[type="checkbox"] {
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  border: 3px solid var(--color-black);
+  position: relative;
+}
+
+.todo-item input[type="checkbox"]:checked {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.todo-item input[type="checkbox"]:checked::after {
+  content: "X";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-weight: bold;
+}
+
+/* Navigation */
+.nav {
+  border-bottom: 5px solid var(--color-black);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav a {
+  font-size: 1.5rem;
+  border-bottom: none;
+  padding: 0.5rem;
+}
+
+.nav a.active {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+/* Glitch effect for About page */
+.glitch-container {
+  position: relative;
+}
+
+.glitch-text {
+  position: relative;
+  animation: glitch 1s infinite;
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+.pixel-bg {
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h10v10H0V0zm10 10h10v10H10V10z' fill='%23000000' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
 }
