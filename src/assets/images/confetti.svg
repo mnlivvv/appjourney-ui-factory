@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M20 10L22 2" stroke="#FFA69E" stroke-width="2" stroke-linecap="round"/>
+  <path d="M14 14L8 8" stroke="#FAF3DD" stroke-width="2" stroke-linecap="round"/>
+  <path d="M12 22L4 24" stroke="#B8F2E6" stroke-width="2" stroke-linecap="round"/>
+  <path d="M14 30L8 36" stroke="#AAC9FF" stroke-width="2" stroke-linecap="round"/>
+  <path d="M22 32L24 40" stroke="#AED9E0" stroke-width="2" stroke-linecap="round"/>
+  <path d="M30 30L36 36" stroke="#FFA69E" stroke-width="2" stroke-linecap="round"/>
+  <path d="M32 22L40 20" stroke="#FAF3DD" stroke-width="2" stroke-linecap="round"/>
+  <path d="M30 14L36 8" stroke="#B8F2E6" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="22" cy="22" r="4" fill="#FFA69E"/>
+  <rect x="28" y="18" width="6" height="6" transform="rotate(-15 28 18)" fill="#B8F2E6"/>
+  <rect x="15" y="26" width="6" height="6" transform="rotate(30 15 26)" fill="#FAF3DD"/>
+  <path d="M45 20L47 12" stroke="#FFA69E" stroke-width="2" stroke-linecap="round"/>
+  <path d="M39 24L33 18" stroke="#FAF3DD" stroke-width="2" stroke-linecap="round"/>
+  <path d="M37 32L29 34" stroke="#B8F2E6" stroke-width="2" stroke-linecap="round"/>
+  <path d="M39 40L33 46" stroke="#AAC9FF" stroke-width="2" stroke-linecap="round"/>
+  <path d="M47 42L49 50" stroke="#AED9E0" stroke-width="2" stroke-linecap="round"/>
+  <path d="M55 40L61 46" stroke="#FFA69E" stroke-width="2" stroke-linecap="round"/>
+  <path d="M57 32L65 30" stroke="#FAF3DD" stroke-width="2" stroke-linecap="round"/>
+  <path d="M55 24L61 18" stroke="#B8F2E6" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="47" cy="32" r="4" fill="#AAC9FF"/>
+  <rect x="53" y="28" width="6" height="6" transform="rotate(-15 53 28)" fill="#AED9E0"/>
+  <rect x="40" y="36" width="6" height="6" transform="rotate(30 40 36)" fill="#FFA69E"/>
+</svg>
