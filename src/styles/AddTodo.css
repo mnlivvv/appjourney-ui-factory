@@ -1,0 +1,142 @@
+.add-todo-container {
+  margin: 16px 0;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.add-todo-button {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #a3a1fc, #7c79fd);
+  color: white;
+  border: none;
+  border-radius: 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(163, 161, 252, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-todo-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(163, 161, 252, 0.5);
+}
+
+.add-todo-container.expanded {
+  background-color: white;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  animation: expand 0.3s ease forwards;
+}
+
+.add-todo-form {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.todo-input {
+  padding: 14px 16px;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  font-size: 1rem;
+  margin-bottom: 12px;
+  transition: border-color 0.3s ease;
+}
+
+.todo-input:focus {
+  border-color: #a3a1fc;
+  outline: none;
+}
+
+.category-select {
+  padding: 14px 16px;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  font-size: 1rem;
+  margin-bottom: 16px;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%236c757d' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 16px;
+  cursor: pointer;
+}
+
+.category-select:focus {
+  border-color: #a3a1fc;
+  outline: none;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.cancel-button, .submit-button {
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cancel-button {
+  background-color: #f1f3f5;
+  border: none;
+  color: #495057;
+}
+
+.submit-button {
+  background: linear-gradient(135deg, #a3a1fc, #7c79fd);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 12px rgba(163, 161, 252, 0.4);
+}
+
+.submit-button:disabled {
+  background: #dee2e6;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.cancel-button:hover {
+  background-color: #e9ecef;
+}
+
+.submit-button:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(163, 161, 252, 0.5);
+}
+
+@keyframes expand {
+  from {
+    max-height: 60px;
+  }
+  to {
+    max-height: 300px;
+  }
+}
+
+/* For small screens */
+@media (max-width: 480px) {
+  .todo-input, .category-select {
+    padding: 12px 14px;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .cancel-button, .submit-button {
+    width: 100%;
+    padding: 12px;
+  }
+}

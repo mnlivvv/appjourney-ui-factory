@@ -1,34 +1,102 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect } from 'react'
 import './App.css'
+import { Todo } from './types'
+import Header from './components/Header'
+import TodoList from './components/TodoList'
+import AddTodo from './components/AddTodo'
 
 function App() {
-  const [count, setCount] = useState(0)
+  // State to store todos
+  const [todos, setTodos] = useState<Todo[]>(() => {
+    const savedTodos = localStorage.getItem('todos');
+    if (savedTodos) {
+      return JSON.parse(savedTodos).map((todo: any) => ({
+        ...todo,
+        createdAt: new Date(todo.createdAt)
+      }));
+    }
+    return [];
+  });
+  
+  // Track counts for header display
+  const completedCount = todos.filter(todo => todo.completed).length;
+  
+  // Effect to save todos to localStorage
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
+
+  // Function to add a new todo
+  const addTodo = (text: string, category: string) => {
+    const newTodo: Todo = {
+      id: crypto.randomUUID(),
+      text,
+      completed: false,
+      category,
+      createdAt: new Date()
+    };
+    
+    setTodos(prevTodos => [newTodo, ...prevTodos]);
+    createConfetti();
+  };
+
+  // Function to toggle todo completion
+  const toggleTodo = (id: string) => {
+    setTodos(prevTodos => 
+      prevTodos.map(todo => 
+        todo.id === id 
+          ? { ...todo, completed: !todo.completed } 
+          : todo
+      )
+    );
+    
+    // Check if this operation completed a todo
+    const todo = todos.find(t => t.id === id);
+    if (todo && !todo.completed) {
+      // This is marking as complete, show confetti
+      createConfetti();
+    }
+  };
+
+  // Function to delete a todo
+  const deleteTodo = (id: string) => {
+    setTodos(prevTodos => prevTodos.filter(todo => todo.id !== id));
+  };
+
+  // Confetti animation
+  const createConfetti = () => {
+    const colors = ['#ff6b6b', '#a3a1fc', '#82ca9c', '#ffd166', '#73c1e6'];
+    
+    for (let i = 0; i < 30; i++) {
+      const confetti = document.createElement('div');
+      confetti.classList.add('confetti');
+      confetti.style.left = `${Math.random() * 100}vw`;
+      confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      confetti.style.animationDelay = `${Math.random() * 3}s`;
+      
+      document.body.appendChild(confetti);
+      
+      setTimeout(() => {
+        document.body.removeChild(confetti);
+      }, 3000);
+    }
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="app-container">
+      <Header 
+        completedCount={completedCount} 
+        totalCount={todos.length}
+      />
+      
+      <AddTodo onAddTodo={addTodo} />
+      
+      <TodoList 
+        todos={todos} 
+        onToggleTodo={toggleTodo} 
+        onDeleteTodo={deleteTodo}
+      />
+    </div>
   )
 }
 
