@@ -1,5 +1,5 @@
 import TodoItem from './TodoItem';
-import '../styles/TodoList.css';
+import '../styles/todolist.css';
 import type { Todo } from '../types';
 
 interface TodoListProps {
