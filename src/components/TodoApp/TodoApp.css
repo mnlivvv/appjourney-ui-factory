@@ -1,0 +1,288 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
+
+.todo-app {
+  font-family: 'Fredoka', sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.app-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.app-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #4285F4;
+  text-shadow: 2px 2px 0px #FBBC05;
+  letter-spacing: 2px;
+}
+
+.app-subtitle {
+  color: #34A853;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.task-form {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.task-input {
+  flex: 1;
+  padding: 1rem;
+  border: 3px solid #FBBC05;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: 'Fredoka', sans-serif;
+  background-color: #FFF8E1;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.task-input:focus {
+  border-color: #4285F4;
+  box-shadow: 0 0 8px rgba(66, 133, 244, 0.5);
+}
+
+.category-select {
+  padding: 1rem;
+  border: 3px solid #34A853;
+  border-radius: 12px;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1rem;
+  background-color: #E8F5E9;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.category-select:focus {
+  border-color: #4285F4;
+  box-shadow: 0 0 8px rgba(66, 133, 244, 0.5);
+}
+
+.add-button {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 12px;
+  background-color: #4285F4;
+  color: white;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-button:hover {
+  background-color: #2b76e5;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(66, 133, 244, 0.4);
+}
+
+.add-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(66, 133, 244, 0.4);
+}
+
+.tasks-container {
+  min-height: 200px;
+  padding: 1rem;
+  border-radius: 16px;
+  background-color: #F5F5F5;
+  transition: background-color 0.2s;
+}
+
+.tasks-container.dragging-over {
+  background-color: #E3F2FD;
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.category-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.category-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #212121;
+  margin: 0;
+}
+
+.task-count {
+  font-size: 1rem;
+  color: #757575;
+  margin-left: 0.5rem;
+}
+
+.task-card {
+  display: flex;
+  align-items: center;
+  padding: 1.2rem;
+  margin-bottom: 1rem;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.task-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.task-card.dragging {
+  opacity: 0.5;
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.task-card.work {
+  border-left: 5px solid #4285F4;
+}
+
+.task-card.home {
+  border-left: 5px solid #EA4335;
+}
+
+.task-card.fun {
+  border-left: 5px solid #FBBC05;
+}
+
+.task-card.study {
+  border-left: 5px solid #34A853;
+}
+
+.task-card.health {
+  border-left: 5px solid #9C27B0;
+}
+
+.task-checkbox {
+  margin-right: 1rem;
+  transform: scale(1.5);
+  accent-color: #4285F4;
+  cursor: pointer;
+}
+
+.task-content {
+  flex: 1;
+  font-size: 1.1rem;
+  color: #212121;
+  transition: all 0.3s ease;
+}
+
+.task-card.completed .task-content {
+  color: #9E9E9E;
+  text-decoration: line-through;
+}
+
+.task-category-icon {
+  width: 24px;
+  height: 24px;
+  margin-left: 1rem;
+}
+
+.task-remove {
+  background: none;
+  border: none;
+  color: #EA4335;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-left: 1rem;
+  transition: all 0.2s;
+}
+
+.task-remove:hover {
+  transform: scale(1.2);
+}
+
+.drag-handle {
+  cursor: grab;
+  color: #BDBDBD;
+  font-size: 1.2rem;
+  margin-right: 1rem;
+}
+
+.confetti-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+@media (max-width: 600px) {
+  .todo-app {
+    padding: 1rem;
+  }
+  
+  .app-title {
+    font-size: 2rem;
+  }
+  
+  .task-form {
+    flex-direction: column;
+  }
+  
+  .add-button {
+    width: 100%;
+  }
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  color: #9E9E9E;
+  text-align: center;
+}
+
+.empty-state-text {
+  font-size: 1.2rem;
+  margin: 1rem 0;
+}
+
+.empty-state-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+}
+
+.bounce-animation {
+  animation: bounce 1s;
+}
