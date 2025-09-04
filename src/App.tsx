@@ -1,34 +1,88 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect } from 'react'
 import './App.css'
+import TodoList from './components/TodoList'
+import { Todo } from './components/TodoItem'
+import DateTime from './components/DateTime'
+import MindfulnessQuote from './components/MindfulnessQuote'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [todos, setTodos] = useState<Todo[]>(() => {
+    // Initialize from localStorage if available
+    const savedTodos = localStorage.getItem('todos')
+    if (savedTodos) {
+      try {
+        return JSON.parse(savedTodos).map((todo: any) => ({
+          ...todo,
+          createdAt: new Date(todo.createdAt)
+        }))
+      } catch (error) {
+        console.error('Failed to parse saved todos', error)
+        return []
+      }
+    }
+    return []
+  })
+
+  // Save todos to localStorage when they change
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos))
+  }, [todos])
+
+  // Add a new todo
+  const addTodo = (text: string) => {
+    const newTodo: Todo = {
+      id: Date.now().toString(),
+      text,
+      completed: false,
+      createdAt: new Date()
+    }
+    setTodos([...todos, newTodo])
+  }
+
+  // Toggle todo completion status
+  const toggleTodo = (id: string) => {
+    setTodos(
+      todos.map(todo =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    )
+  }
+
+  // Delete a todo
+  const deleteTodo = (id: string) => {
+    setTodos(todos.filter(todo => todo.id !== id))
+  }
+
+  // Edit a todo
+  const editTodo = (id: string, text: string) => {
+    setTodos(
+      todos.map(todo =>
+        todo.id === id ? { ...todo, text } : todo
+      )
+    )
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="app-container">
+      <div className="app-header">
+        <DateTime />
+        <h1>Zen Tasks</h1>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+      
+      <div className="app-content">
+        <TodoList
+          todos={todos}
+          onToggle={toggleTodo}
+          onDelete={deleteTodo}
+          onEdit={editTodo}
+          onAdd={addTodo}
+        />
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+      
+      <div className="app-footer">
+        <MindfulnessQuote />
+      </div>
+    </div>
   )
 }
 
