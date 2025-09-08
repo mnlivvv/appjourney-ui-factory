@@ -2,7 +2,8 @@
 // to show focus styles only when appropriate for accessibility
 
 export const setupKeyboardFocus = (): void => {
-  let isUsingKeyboard = false;
+  // Track keyboard vs mouse navigation state
+  let isUsingKeyboard = false; // eslint-disable-line @typescript-eslint/no-unused-vars
 
   const handleKeyDown = (e: KeyboardEvent): void => {
     if (e.key === 'Tab') {

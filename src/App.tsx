@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { TodoForm } from './components/TodoForm';
 import { TodoList } from './components/TodoList';
 import { FocusToggle } from './components/FocusToggle';
-import { Todo } from './types/todo';
+import type { Todo } from './types/todo';
 import './App.css'
 
 function App() {
