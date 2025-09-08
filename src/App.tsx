@@ -1,34 +1,97 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect } from 'react';
+import { TodoForm } from './components/TodoForm';
+import { TodoList } from './components/TodoList';
+import { FocusToggle } from './components/FocusToggle';
+import { Todo } from './types/todo';
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [todos, setTodos] = useState<Todo[]>(() => {
+    const savedTodos = localStorage.getItem('todos');
+    if (savedTodos) {
+      try {
+        // Parse the stored todos and convert date strings back to Date objects
+        return JSON.parse(savedTodos, (key, value) => {
+          if (key === 'createdAt') return new Date(value);
+          return value;
+        });
+      } catch (error) {
+        console.error('Error parsing saved todos:', error);
+        return [];
+      }
+    }
+    return [];
+  });
+  
+  const [focusMode, setFocusMode] = useState(() => {
+    const savedMode = localStorage.getItem('focusMode');
+    return savedMode === 'true';
+  });
+
+  // Save todos to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
+  
+  // Save focus mode to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('focusMode', String(focusMode));
+  }, [focusMode]);
+
+  const addTodo = (text: string) => {
+    const newTodo: Todo = {
+      id: crypto.randomUUID(),
+      text,
+      completed: false,
+      createdAt: new Date()
+    };
+    
+    setTodos([...todos, newTodo]);
+  };
+
+  const toggleTodo = (id: string) => {
+    setTodos(todos.map(todo => 
+      todo.id === id ? { ...todo, completed: !todo.completed } : todo
+    ));
+  };
+
+  const deleteTodo = (id: string) => {
+    setTodos(todos.filter(todo => todo.id !== id));
+  };
+
+  const editTodo = (id: string, newText: string) => {
+    setTodos(todos.map(todo => 
+      todo.id === id ? { ...todo, text: newText } : todo
+    ));
+  };
+
+  const toggleFocusMode = () => {
+    setFocusMode(prevMode => !prevMode);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className={`app ${focusMode ? 'focus-mode' : ''}`}>
+      <div className="container">
+        <header className={`app-header ${focusMode ? 'hidden' : ''}`}>
+          <h1>Tasks</h1>
+          <FocusToggle focusMode={focusMode} onToggle={toggleFocusMode} />
+        </header>
+        
+        <main>
+          <TodoForm onAdd={addTodo} />
+          <TodoList 
+            todos={todos} 
+            onToggle={toggleTodo} 
+            onDelete={deleteTodo} 
+            onEdit={editTodo} 
+          />
+        </main>
+        
+        <footer className={`app-footer ${focusMode ? 'hidden' : ''}`}>
+          <p>Click a task to edit it.</p>
+        </footer>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   )
 }
 
