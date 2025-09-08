@@ -1,4 +1,4 @@
-import { Todo } from '../types/Todo';
+import type { Todo } from '../types/Todo';
 import { useTodos } from '../context/TodoContext';
 import useFormattedDate from '../hooks/useFormattedDate';
 import AnimatedCheckmark from './AnimatedCheckmark';
