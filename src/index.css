@@ -1,11 +1,40 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  /* Base Fonts */
+  font-family: 'Nunito', sans-serif;
+  line-height: 1.6;
   font-weight: 400;
 
+  /* Light Theme Colors */
+  --color-background: #f8f9ff;
+  --color-text: #33375b;
+  --color-primary: #7b68ee;
+  --color-secondary: #ffa69e;
+  --color-accent-1: #06d6a0;
+  --color-accent-2: #ffbe0b;
+  --color-accent-3: #ef476f;
+  --color-gray-light: #e9ecef;
+  --color-gray: #ced4da;
+  --color-gray-dark: #868e96;
+  
+  /* Common Styles */
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 24px;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.12);
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  background-image: 
+    radial-gradient(circle at 100% 10%, rgba(123, 104, 238, 0.05) 0%, transparent 70%),
+    radial-gradient(circle at 0% 90%, rgba(255, 166, 158, 0.07) 0%, transparent 70%);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -13,56 +42,130 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Dark Theme */
+body.dark-mode {
+  --color-background: #1a1c2e;
+  --color-text: #eef0ff;
+  --color-primary: #8c7df7;
+  --color-secondary: #ff9a8c;
+  --color-accent-1: #00e1a9;
+  --color-accent-2: #ffc72c;
+  --color-accent-3: #ff5c83;
+  --color-gray-light: #3a3f55;
+  --color-gray: #52596e;
+  --color-gray-dark: #7e879e;
+  
+  background-image: 
+    radial-gradient(circle at 100% 10%, rgba(123, 104, 238, 0.15) 0%, transparent 70%),
+    radial-gradient(circle at 0% 90%, rgba(255, 166, 158, 0.1) 0%, transparent 70%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 a {
   font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
 }
+
 a:hover {
-  color: #535bf2;
+  color: var(--color-accent-1);
 }
 
 body {
   margin: 0;
   display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 h1 {
   font-size: 3.2em;
-  line-height: 1.1;
+  margin-bottom: 0.5em;
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
+  font-family: 'Nunito', sans-serif;
+  border-radius: var(--border-radius-md);
+  border: 2px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  font-weight: 600;
+  background-color: var(--color-primary);
+  color: white;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+button:hover {
+  background-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+button:focus,
+button:focus-visible {
+  outline: 3px solid rgba(123, 104, 238, 0.3);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+input {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1em;
+  padding: 0.8em 1em;
+  border-radius: var(--border-radius-md);
+  border: 2px solid var(--color-gray-light);
+  background-color: white;
+  color: var(--color-text);
+  transition: all var(--transition-fast);
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(123, 104, 238, 0.2);
+}
+
+body.dark-mode input {
+  background-color: var(--color-gray-light);
+  color: var(--color-text);
+  border-color: var(--color-gray);
+}
+
+/* Pulse animation for button click */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.pulse {
+  animation: pulse 0.3s ease-in-out;
 }
