@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { Todo } from '../types';
+import type { Todo } from '../types.ts';
 import type { FormEvent } from 'react';
 
 interface TodoItemProps {

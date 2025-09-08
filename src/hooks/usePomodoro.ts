@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
-import type { PomodoroTimer } from '../types';
-import useLocalStorage from './useLocalStorage';
+import type { PomodoroTimer } from '../types.ts';
+import useLocalStorage from './useLocalStorage.ts';
 
 const DEFAULT_WORK_TIME = 25 * 60; // 25 minutes in seconds
 const DEFAULT_BREAK_TIME = 5 * 60; // 5 minutes in seconds

@@ -3,16 +3,16 @@ import { v4 as uuidv4 } from 'uuid'
 import './App.css'
 
 // Components
-import Header from './components/Header'
-import TodoForm from './components/TodoForm'
-import TodoList from './components/TodoList'
-import PomodoroTimer from './components/PomodoroTimer'
-import DailyQuote from './components/DailyQuote'
-import Footer from './components/Footer'
+import Header from './components/Header.tsx'
+import TodoForm from './components/TodoForm.tsx'
+import TodoList from './components/TodoList.tsx'
+import PomodoroTimer from './components/PomodoroTimer.tsx'
+import DailyQuote from './components/DailyQuote.tsx'
+import Footer from './components/Footer.tsx'
 
 // Types and hooks
-import type { Todo } from './types'
-import useLocalStorage from './hooks/useLocalStorage'
+import type { Todo } from './types.ts'
+import useLocalStorage from './hooks/useLocalStorage.ts'
 
 function App() {
   const [todos, setTodos] = useLocalStorage<Todo[]>('todos', []);

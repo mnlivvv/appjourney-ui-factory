@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import TodoItem from './TodoItem';
-import type { Todo, FilterType } from '../types';
+import TodoItem from './TodoItem.tsx';
+import type { Todo, FilterType } from '../types.ts';
 
 interface TodoListProps {
   todos: Todo[];
