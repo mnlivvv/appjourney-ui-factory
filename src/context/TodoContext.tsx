@@ -31,17 +31,19 @@ interface TodoProviderProps {
 
 export const TodoProvider = ({ children }: TodoProviderProps) => {
   const [todos, setTodos] = useState<Todo[]>(() => {
-    const savedTodos = localStorage.getItem('todos');
-    if (savedTodos) {
-      try {
-        const parsedTodos = JSON.parse(savedTodos);
-        return parsedTodos.map((todo: any) => ({
-          ...todo,
-          createdAt: new Date(todo.createdAt)
-        }));
-      } catch (error) {
-        console.error('Failed to parse saved todos', error);
-        return [];
+    if (typeof window !== 'undefined') {
+      const savedTodos = localStorage.getItem('todos');
+      if (savedTodos) {
+        try {
+          const parsedTodos = JSON.parse(savedTodos);
+          return parsedTodos.map((todo: any) => ({
+            ...todo,
+            createdAt: new Date(todo.createdAt)
+          }));
+        } catch (error) {
+          console.error('Failed to parse saved todos', error);
+          return [];
+        }
       }
     }
     return [];
@@ -51,13 +53,15 @@ export const TodoProvider = ({ children }: TodoProviderProps) => {
 
   // Save todos to localStorage whenever they change
   useEffect(() => {
-    localStorage.setItem('todos', JSON.stringify(todos));
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('todos', JSON.stringify(todos));
+    }
   }, [todos]);
 
   const addTodo = (text: string) => {
     if (text.trim()) {
       const newTodo: Todo = {
-        id: crypto.randomUUID(),
+        id: Date.now().toString(36) + Math.random().toString(36).substring(2),
         text: text.trim(),
         completed: false,
         createdAt: new Date()

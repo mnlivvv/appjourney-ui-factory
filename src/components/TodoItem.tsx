@@ -1,9 +1,7 @@
-import { useState } from 'react';
 import { Todo } from '../types/Todo';
 import { useTodos } from '../context/TodoContext';
 import useFormattedDate from '../hooks/useFormattedDate';
 import AnimatedCheckmark from './AnimatedCheckmark';
-import TodoDragHandle from './TodoDragHandle';
 
 interface TodoItemProps {
   todo: Todo;
@@ -12,15 +10,9 @@ interface TodoItemProps {
 const TodoItem = ({ todo }: TodoItemProps) => {
   const { toggleTodo, deleteTodo } = useTodos();
   const formattedDate = useFormattedDate(todo.createdAt);
-  const [isDragging, setIsDragging] = useState(false);
   
   return (
-    <li className={`todo-item ${isDragging ? 'todo-item--dragging' : ''}`}>
-      <TodoDragHandle 
-        onDragStart={() => setIsDragging(true)} 
-        onDragEnd={() => setIsDragging(false)}
-      />
-      
+    <li className="todo-item">
       <AnimatedCheckmark 
         checked={todo.completed} 
         onChange={() => toggleTodo(todo.id)} 

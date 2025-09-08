@@ -20,8 +20,18 @@ const TodoList = () => {
   
   // Check if all todos are completed
   useEffect(() => {
+    // Only show confetti when there are todos and all are completed
     if (todos.length > 0 && activeTodoCount === 0) {
       setShowConfetti(true);
+      
+      // Hide confetti after a delay
+      const timer = setTimeout(() => {
+        setShowConfetti(false);
+      }, 3000);
+      
+      return () => clearTimeout(timer);
+    } else {
+      setShowConfetti(false);
     }
   }, [todos, activeTodoCount]);
 

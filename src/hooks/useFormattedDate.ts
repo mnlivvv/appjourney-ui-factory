@@ -5,6 +5,11 @@
  * @returns A formatted date string
  */
 export const useFormattedDate = (date: Date): string => {
+  // Handle invalid dates
+  if (!(date instanceof Date) || isNaN(date.getTime())) {
+    return '';
+  }
+  
   const now = new Date();
   const diff = now.getTime() - date.getTime();
   
@@ -31,14 +36,12 @@ export const useFormattedDate = (date: Date): string => {
     return `${days} day${days !== 1 ? 's' : ''} ago`;
   }
   
-  // Format as a date
-  const options: Intl.DateTimeFormatOptions = { 
-    year: 'numeric', 
-    month: 'short', 
-    day: 'numeric' 
-  };
+  // Format as a date - simple formatting to avoid locale issues
+  const year = date.getFullYear();
+  const month = date.toLocaleString('en', { month: 'short' });
+  const day = date.getDate();
   
-  return date.toLocaleDateString(undefined, options);
+  return `${month} ${day}, ${year}`;
 };
 
 export default useFormattedDate;
