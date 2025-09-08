@@ -78,9 +78,11 @@ function App() {
   const handleDeleteTask = (taskId: string) => {
     setTasks(tasks.filter(task => task.id !== taskId))
   }
-
-  // We've removed the drag and drop functionality
-  // since it's not compatible with React 19
+  
+  // Reorder tasks (now using up/down arrows instead of drag and drop)
+  const handleReorderTasks = (reorderedTasks: Task[]) => {
+    setTasks(reorderedTasks)
+  }
 
   return (
     <div className="todo-app">
@@ -106,7 +108,7 @@ function App() {
           tasks={tasks} 
           onToggleComplete={handleToggleComplete} 
           onDeleteTask={handleDeleteTask}
-          onReorderTasks={() => {}}
+          onReorderTasks={handleReorderTasks}
         />
         
         {tasks.length > 0 && (

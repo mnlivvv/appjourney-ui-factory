@@ -274,6 +274,30 @@
   color: var(--color-primary);
 }
 
+.task-item-container {
+  position: relative;
+}
+
+.task-reorder-buttons {
+  position: absolute;
+  right: -40px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+@media (max-width: 768px) {
+  .task-reorder-buttons {
+    position: static;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 8px;
+    transform: none;
+  }
+}
+
 /* Empty State */
 .empty-state {
   text-align: center;
