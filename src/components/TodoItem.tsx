@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Todo } from '../types';
+import type { Todo } from '../types';
+import type { FormEvent } from 'react';
 
 interface TodoItemProps {
   todo: Todo;
@@ -23,7 +24,7 @@ const TodoItem = ({
   const [isEditing, setIsEditing] = useState(false);
   const [editText, setEditText] = useState(todo.text);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (editText.trim()) {
       editTodo(todo.id, editText);

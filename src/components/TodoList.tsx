@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import TodoItem from './TodoItem';
-import { Todo, FilterType } from '../types';
+import type { Todo, FilterType } from '../types';
 
 interface TodoListProps {
   todos: Todo[];
@@ -40,15 +40,17 @@ const TodoList = ({
     }
   });
 
-  // Update focused todo when todos change
-  if (isFocusMode && !focusedTodoId && filteredTodos.length > 0) {
-    const firstActiveTodo = filteredTodos.find(todo => !todo.completed);
-    if (firstActiveTodo) {
-      setFocusedTodoId(firstActiveTodo.id);
-    } else if (filteredTodos.length > 0) {
-      setFocusedTodoId(filteredTodos[0].id);
+  // Update focused todo when todos or filter change
+  useEffect(() => {
+    if (isFocusMode && !focusedTodoId && filteredTodos.length > 0) {
+      const firstActiveTodo = filteredTodos.find(todo => !todo.completed);
+      if (firstActiveTodo) {
+        setFocusedTodoId(firstActiveTodo.id);
+      } else if (filteredTodos.length > 0) {
+        setFocusedTodoId(filteredTodos[0].id);
+      }
     }
-  }
+  }, [isFocusMode, focusedTodoId, filteredTodos]);
 
   // Count active and completed todos
   const activeTodos = todos.filter(todo => !todo.completed).length;

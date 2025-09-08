@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { PomodoroTimer } from '../types';
+import type { PomodoroTimer } from '../types';
 import useLocalStorage from './useLocalStorage';
 
 const DEFAULT_WORK_TIME = 25 * 60; // 25 minutes in seconds
@@ -71,7 +71,9 @@ const usePomodoro = () => {
       const audioFeedback = () => {
         try {
           const audio = new Audio('/notification.mp3');
-          audio.play();
+          void audio.play().catch(err => {
+            console.warn('Audio notification failed to play:', err);
+          });
         } catch (error) {
           console.warn('Audio notification failed to play:', error);
         }

@@ -3,7 +3,7 @@ export interface Todo {
   text: string;
   completed: boolean;
   isImportant: boolean;
-  createdAt: Date;
+  createdAt: string;
 }
 
 export interface PomodoroTimer {

@@ -11,7 +11,7 @@ import DailyQuote from './components/DailyQuote'
 import Footer from './components/Footer'
 
 // Types and hooks
-import { Todo } from './types'
+import type { Todo } from './types'
 import useLocalStorage from './hooks/useLocalStorage'
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
       text,
       completed: false,
       isImportant: false,
-      createdAt: new Date()
+      createdAt: new Date().toISOString()
     };
     setTodos([...todos, newTodo]);
   };
