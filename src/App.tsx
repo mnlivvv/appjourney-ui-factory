@@ -4,7 +4,7 @@ import { FaSun, FaMoon, FaClipboardCheck } from 'react-icons/fa';
 import { v4 as uuidv4 } from 'uuid';
 import './App.css';
 
-import { Todo } from './types';
+import type { Todo } from './types';
 import TodoList from './components/TodoList';
 import AddTodo from './components/AddTodo';
 import Confetti from './components/Confetti';

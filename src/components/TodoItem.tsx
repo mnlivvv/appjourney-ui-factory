@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaCheck, FaTrash } from 'react-icons/fa';
-import { Todo } from '../types';
+import type { Todo } from '../types';
 
 interface TodoItemProps {
   todo: Todo;

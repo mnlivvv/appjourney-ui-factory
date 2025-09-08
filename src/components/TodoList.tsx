@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import TodoItem from './TodoItem';
-import { Todo } from '../types';
+import type { Todo } from '../types';
 
 interface TodoListProps {
   todos: Todo[];

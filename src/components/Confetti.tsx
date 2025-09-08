@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import type { JSX } from 'react';
 import { motion } from 'framer-motion';
 
 interface ConfettiProps {
