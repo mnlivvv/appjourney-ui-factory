@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
-import type { JSX } from 'react';
 import { motion } from 'framer-motion';
+import React from 'react';
 
 interface ConfettiProps {
   active: boolean;
 }
 
 const Confetti = ({ active }: ConfettiProps) => {
-  const [particles, setParticles] = useState<JSX.Element[]>([]);
+  const [particles, setParticles] = useState<React.ReactNode[]>([]);
   
   useEffect(() => {
     if (!active) {
@@ -16,7 +16,7 @@ const Confetti = ({ active }: ConfettiProps) => {
     }
     
     // Create confetti particles
-    const newParticles: JSX.Element[] = [];
+    const newParticles: React.ReactNode[] = [];
     const colors = ['#FFD166', '#EF476F', '#06D6A0', '#118AB2', '#073B4C', '#84BCDA', '#F3B0C3'];
     
     for (let i = 0; i < 50; i++) {
